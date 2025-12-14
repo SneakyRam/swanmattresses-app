@@ -45,14 +45,14 @@ export default function FeaturedCategories() {
 
             return (
               <Link key={category.title} href={category.href} className="group block">
-                <Card className="overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-1">
+                <Card className="overflow-hidden transition-all duration-300 group-hover:shadow-xl group-hover:-translate-y-2">
                   <CardContent className="p-0">
                     <div className="relative h-96 w-full">
                       <Image
                         src={image.imageUrl}
                         alt={image.description}
                         fill
-                        className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                         data-ai-hint={image.imageHint}
                       />
                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />

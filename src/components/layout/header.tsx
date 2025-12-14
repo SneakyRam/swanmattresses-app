@@ -82,7 +82,7 @@ export default function Header() {
             <Search className="h-5 w-5" />
             <span className="sr-only">Search</span>
           </Button>
-          <Button variant="ghost" size="icon" asChild>
+          <Button variant="ghost" size-icon asChild>
             <Link href="/cart">
               <ShoppingCart className="h-5 w-5" />
               <span className="sr-only">Shopping Cart</span>

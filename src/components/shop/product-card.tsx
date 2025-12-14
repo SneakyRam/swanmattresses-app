@@ -54,21 +54,21 @@ export default function ProductCard({ product }: { product: Product }) {
       className="h-full"
     >
       <Link href={product.href} className="group block h-full">
-        <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+        <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 ease-in-out hover:shadow-2xl hover:-translate-y-2">
           <CardContent className="flex flex-grow flex-col p-0">
             <div className="relative aspect-square w-full">
               <Image
                 src={image.imageUrl}
                 alt={product.name}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
                 data-ai-hint={image.imageHint}
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
               {product.oldPrice && (
                 <Badge variant="destructive" className="absolute top-2 left-2">SALE</Badge>
               )}
-               <div className="absolute bottom-2 right-2 flex items-center justify-center opacity-0 transition-opacity group-hover:opacity-100">
+               <div className="absolute bottom-2 right-2 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bottom-4">
                 <Button size="sm" onClick={handleAddToCart}>
                     <ShoppingCart className="mr-2 h-4 w-4" />
                     Quick Add
