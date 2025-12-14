@@ -54,7 +54,7 @@ export default function ProductCard({ product }: { product: Product }) {
       className="h-full"
     >
       <Link href={product.href} className="group block h-full">
-        <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+        <Card className="flex h-full flex-col overflow-hidden transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
           <CardContent className="flex flex-grow flex-col p-0">
             <div className="relative aspect-square w-full">
               <Image

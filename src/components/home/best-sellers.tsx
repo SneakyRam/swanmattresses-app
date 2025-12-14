@@ -37,7 +37,7 @@ export default function BestSellers() {
 
             return (
               <Link key={product.id} href={product.href} className="group">
-                <Card className="overflow-hidden h-full flex flex-col">
+                <Card className="overflow-hidden h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
                   <CardContent className="p-0 flex-grow flex flex-col">
                     <div className="relative aspect-square w-full">
                       <Image

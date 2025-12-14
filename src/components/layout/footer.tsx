@@ -47,7 +47,7 @@ export default function Footer() {
               <ul className="mt-4 space-y-2">
                 {section.links.map((link) => (
                   <li key={link.href}>
-                    <Link href={link.href} className="text-sm hover:text-primary transition-colors">
+                    <Link href={link.href} className="relative text-sm transition-colors hover:text-primary after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100">
                       {link.label}
                     </Link>
                   </li>
@@ -60,7 +60,7 @@ export default function Footer() {
         <div className="mt-12 border-t pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col sm:flex-row gap-6 text-sm">
-              <a href={`tel:${CONTACT_PHONE}`} className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href={`tel:${CONTACT_PHONE}`} className="flex items-center gap-2 transition-colors hover:text-primary">
                 <Phone className="w-4 h-4" />
                 <span>{CONTACT_PHONE}</span>
               </a>
@@ -72,10 +72,10 @@ export default function Footer() {
 
             <div className="flex gap-4">
               <a href={SOCIAL_INSTAGRAM} target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                <Instagram className="w-6 h-6 hover:text-primary transition-colors" />
+                <Instagram className="w-6 h-6 transition-transform hover:text-primary hover:scale-110" />
               </a>
               <a href={SOCIAL_FACEBOOK} target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                <Facebook className="w-6 h-6 hover:text-primary transition-colors" />
+                <Facebook className="w-6 h-6 transition-transform hover:text-primary hover:scale-110" />
               </a>
             </div>
           </div>
