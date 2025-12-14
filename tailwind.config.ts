@@ -98,13 +98,19 @@ export default {
         'glow': {
           '0%, 100%': { 'box-shadow': '0 0 5px hsl(var(--primary))' },
           '50%': { 'box-shadow': '0 0 20px hsl(var(--primary))' },
-        }
+        },
+        'text-gradient': {
+          to: {
+            'background-position': '200% center',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'gradient-shift': 'gradient-shift 4s ease infinite',
         'glow': 'glow 5s ease-in-out infinite',
+        'text-gradient': 'text-gradient 3s linear infinite',
       },
     },
   },
