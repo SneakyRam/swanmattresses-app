@@ -48,7 +48,7 @@ export default function HeroSection() {
         priority
       />
       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/30 to-transparent" />
-      <div className="absolute inset-0 bg-primary/20" />
+      <div className="absolute inset-0 bg-primary/10" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -61,7 +61,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           aria-label={headlineText}
-          className="font-headline text-4xl font-bold tracking-tighter text-white sm:text-5xl md:text-6xl lg:text-7xl"
+          className="font-headline text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
         >
           {headlineText.split('').map((char, index) => (
             <motion.span key={index} variants={letterAnimation} className="inline-block">
@@ -74,7 +74,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
-          className="mt-4 max-w-xl text-lg text-slate-200 md:text-xl"
+          className="mt-6 max-w-2xl text-lg text-slate-200 md:text-xl"
         >
           Discover handcrafted mattresses, beds, and sofas designed for your ultimate relaxation.
         </motion.p>
@@ -83,14 +83,14 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
-          className="mt-8 flex flex-col gap-4 sm:flex-row"
+          className="mt-10 flex flex-col gap-4 sm:flex-row"
         >
-          <Button size="lg" asChild>
+          <Button size="lg" variant="primary-cta" asChild className="transform transition-transform duration-300 hover:scale-105">
             <Link href="/shop">
               Shop Our Collection <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" asChild>
+          <Button size="lg" variant="outline" asChild className="border-white/50 text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10">
             <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
                 Visit Store / WhatsApp <MessageCircle className="ml-2 h-5 w-5" />
             </a>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Space_Grotesk } from 'next/font/google';
+import { Inter, Playfair_Display } from 'next/font/google';
 import './globals.css';
 
 import { ThemeProvider } from '@/providers/theme-provider';
@@ -11,7 +11,7 @@ import JsonLdSchema from '@/components/shared/json-ld-schema';
 import { BRAND_NAME, WEBSITE_URL } from '@/lib/constants';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' });
+const playfairDisplay = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair-display' });
 
 export const metadata: Metadata = {
   title: {
@@ -39,8 +39,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: `${BRAND_NAME} - Luxury Mattresses, Beds, and Sofas`,
     description: 'Experience unparalleled comfort and luxury with Swan Mattresses. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.',
-    // site: '@YourTwitterHandle', // To be replaced
-    // creator: '@YourTwitterHandle', // To be replaced
     images: ['/twitter-image.jpg'], // To be replaced with an actual image
   },
   robots: {
@@ -58,11 +56,10 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#F0E6FF' },
-    { media: '(prefers-color-scheme: dark)', color: '#1A102C' },
+    { media: '(prefers-color-scheme: light)', color: '#F9FBFD' },
+    { media: '(prefers-color-scheme: dark)', color: '#0B1220' },
   ],
 }
-
 
 export default function RootLayout({
   children,
@@ -74,7 +71,7 @@ export default function RootLayout({
       <head>
         <JsonLdSchema />
       </head>
-      <body className={`${inter.variable} ${spaceGrotesk.variable} font-body antialiased`}>
+      <body className={`${inter.variable} ${playfairDisplay.variable} font-body antialiased`}>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
