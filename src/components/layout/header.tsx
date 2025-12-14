@@ -96,16 +96,15 @@ export default function Header() {
 
             <Tooltip>
               <TooltipTrigger asChild>
-                <div>
-                   {/* The cart functionality is not implemented yet. */}
-                  <Button variant="ghost" size="icon" disabled>
+                <Link href="/cart" legacyBehavior passHref>
+                  <Button variant="ghost" size="icon">
                     <ShoppingCart className="h-5 w-5" />
                     <span className="sr-only">Shopping Cart</span>
                   </Button>
-                </div>
+                </Link>
               </TooltipTrigger>
               <TooltipContent>
-                <p>Cart functionality coming soon</p>
+                <p>View Cart</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
