@@ -205,8 +205,8 @@ export default function ContactPage() {
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.802315752319!2d78.601931!3d17.485122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9c148c155555%3A0x44d32f7903823032!2sSwan%20Mattresses%3A%20Manufacturers%20of%20Premium%20Mattresses%20%2C%20Sofas%20And%20Recliners!5e0!3m2!1sen!2sus!4v1722345678901!5m2!1sen!2sus"
                       width="100%"
                       height="100%"
-                      style={{ border: 0, pointerEvents: 'none' }}
-                      allowFullScreen={false}
+                      style={{ border: 0 }}
+                      allowFullScreen={true}
                       loading="lazy"
                       referrerPolicy="no-referrer-when-downgrade"
                       title="Swan Mattresses Store Location"
