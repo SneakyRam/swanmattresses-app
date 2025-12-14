@@ -1,3 +1,4 @@
+
 'use client';
 
 import Image from 'next/image';
@@ -7,7 +8,11 @@ import { ArrowRight, MessageCircle } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { WHATSAPP_LINK, TAGLINE } from '@/lib/constants';
+import {
+  WHATSAPP_LINK,
+  TAGLINE_MAIN,
+  TAGLINE_SUB,
+} from '@/lib/constants';
 
 const heroImage = PlaceHolderImages.find(
   (img) => img.id === 'hero-background'
@@ -52,8 +57,11 @@ export default function HeroSection() {
           }}
           className="font-headline text-5xl font-bold tracking-tight sm:text-7xl"
         >
-          <span className="animate-text-gradient bg-gradient-to-r from-brand-300 via-brand-500 to-brand-300 bg-[200%_auto] bg-clip-text text-transparent">
-            {TAGLINE}
+          <span className="animate-text-gradient bg-gradient-to-r from-brand-300 via-brand-500 to-brand-300 bg-[200%_auto] bg-clip-text text-transparent leading-[1.1] sm:leading-[1.05]">
+            {TAGLINE_MAIN}
+            <span className="block text-brand-200">
+              {TAGLINE_SUB}
+            </span>
           </span>
         </motion.h1>
 

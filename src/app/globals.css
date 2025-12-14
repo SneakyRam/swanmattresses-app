@@ -104,3 +104,20 @@
     @apply text-base text-secondary-foreground;
   }
 }
+
+@keyframes textGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.animate-text-gradient {
+  background-size: 200% 200%;
+  animation: textGradient 6s ease infinite;
+}

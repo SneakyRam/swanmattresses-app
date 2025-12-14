@@ -8,13 +8,13 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import ChatWidget from '@/components/shared/chat-widget';
 import JsonLdSchema from '@/components/shared/json-ld-schema';
-import { BRAND_NAME, TAGLINE, WEBSITE_URL } from '@/lib/constants';
+import { BRAND_NAME, TAGLINE_MAIN, TAGLINE_SUB, WEBSITE_URL } from '@/lib/constants';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair-display' });
 
-const siteTitle = `${BRAND_NAME} | ${TAGLINE}`;
-const siteDescription = `Experience unparalleled comfort with ${BRAND_NAME}. ${TAGLINE}. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.`;
+const siteTitle = `${BRAND_NAME} | ${TAGLINE_MAIN}`;
+const siteDescription = `Experience unparalleled comfort with ${BRAND_NAME}. ${TAGLINE_MAIN} ${TAGLINE_SUB}. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.`;
 
 export const metadata: Metadata = {
   title: {
