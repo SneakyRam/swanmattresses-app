@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, Search, ShoppingCart, User } from 'lucide-react';
+import { Menu, Search, User } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -92,22 +92,6 @@ export default function Header() {
               </TooltipTrigger>
               <TooltipContent>
                 <p>Coming Soon</p>
-              </TooltipContent>
-            </Tooltip>
-
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Link href="/cart" legacyBehavior={false}>
-                  <Button asChild variant="ghost" size="icon">
-                    <span>
-                      <ShoppingCart className="h-5 w-5" />
-                      <span className="sr-only">Shopping Cart</span>
-                    </span>
-                  </Button>
-                </Link>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>View Cart</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
