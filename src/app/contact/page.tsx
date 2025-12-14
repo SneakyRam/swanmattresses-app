@@ -13,6 +13,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { useToast } from '@/hooks/use-toast';
 import { Phone, Mail, MapPin, Instagram, Facebook, Loader2 } from 'lucide-react';
 import { BRAND_NAME, CONTACT_PHONE, SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, STORE_LOCATION, STORE_LOCATION_URL } from '@/lib/constants';
+import Link from 'next/link';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -167,7 +168,7 @@ export default function ContactPage() {
             <p className="mt-2 text-muted-foreground">Find us here or follow our journey online.</p>
             <div className="mt-8 space-y-6">
               {contactInfo.map((item, index) => (
-                <a
+                <Link
                   key={index}
                   href={item.href}
                   target="_blank"
@@ -176,13 +177,13 @@ export default function ContactPage() {
                 >
                   <item.icon className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
                   <span>{item.text}</span>
-                </a>
+                </Link>
               ))}
             </div>
             
             <div className="mt-10 space-y-4">
                  {socialLinks.map((item, index) => (
-                    <a
+                    <Link
                       key={index}
                       href={item.href}
                       target="_blank"
@@ -191,25 +192,27 @@ export default function ContactPage() {
                     >
                       <item.icon className="h-6 w-6 flex-shrink-0 text-primary" />
                       <span>{item.text}</span>
-                    </a>
+                    </Link>
                   ))}
             </div>
              <div className="mt-12">
               <h3 className="font-headline text-2xl font-bold">Visit Our Store</h3>
               <p className="mt-2 text-muted-foreground">{STORE_LOCATION}</p>
               {/* Google Map */}
-              <div className="mt-4 h-80 w-full overflow-hidden rounded-lg border shadow-sm">
-                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.802315752319!2d78.601931!3d17.485122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9c148c155555%3A0x44d32f7903823032!2sSwan%20Mattresses%20And%20Sofas%20Manufacturer!5e0!3m2!1sen!2sus!4v1721323315883!5m2!1sen!2sus"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen={false}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Swan Mattresses Store Location"
-                  ></iframe>
-              </div>
+              <Link href={STORE_LOCATION_URL} target="_blank" rel="noopener noreferrer">
+                <div className="mt-4 h-80 w-full overflow-hidden rounded-lg border shadow-sm transition-shadow hover:shadow-lg">
+                   <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.802315752319!2d78.601931!3d17.485122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9c148c155555%3A0x44d32f7903823032!2sSwan%20Mattresses%20And%20Sofas%20Manufacturer!5e0!3m2!1sen!2sus!4v1721323315883!5m2!1sen!2sus"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0, pointerEvents: 'none' }}
+                      allowFullScreen={false}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      title="Swan Mattresses Store Location"
+                    ></iframe>
+                </div>
+              </Link>
             </div>
           </motion.div>
         </div>
