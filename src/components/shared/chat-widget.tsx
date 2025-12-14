@@ -2,31 +2,73 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { MessageSquare, X, Loader, Bot, ExternalLink } from 'lucide-react';
+import {
+  MessageSquare,
+  X,
+  Loader,
+  Bot,
+  ExternalLink,
+  Phone,
+  Instagram,
+  Facebook,
+} from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { aiChatAssistant, type AIChatAssistantOutput } from '@/ai/flows/ai-chat-assistant';
 import Logo from './logo';
+
+const getIconForReply = (label: string) => {
+  const lowerCaseLabel = label.toLowerCase();
+  if (lowerCaseLabel.includes('whatsapp')) {
+    // Lucide doesn't have a dedicated WhatsApp icon, using a generic chat icon.
+    return <MessageSquare className="mr-2 h-4 w-4" />;
+  }
+  if (lowerCaseLabel.includes('instagram')) {
+    return <Instagram className="mr-2 h-4 w-4" />;
+  }
+  if (lowerCaseLabel.includes('call')) {
+    return <Phone className="mr-2 h-4 w-4" />;
+  }
+  if (lowerCaseLabel.includes('facebook')) {
+    return <Facebook className="mr-2 h-4 w-4" />;
+  }
+  return <ExternalLink className="mr-2 h-4 w-4 text-muted-foreground" />;
+};
+
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [replies, setReplies] = useState<AIChatAssistantOutput['smartReplies']>([]);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    if (isOpen && replies.length === 0) {
+    if (isOpen && replies.length === 0 && !isLoading) {
       setIsLoading(true);
+      setError(null);
       aiChatAssistant({})
         .then((output) => {
           if (output?.smartReplies) {
             setReplies(output.smartReplies);
+          } else {
+             setError('Could not load suggestions.');
           }
         })
-        .catch(console.error)
+        .catch((err) => {
+          console.error('Error fetching chat assistant replies:', err);
+          setError('Failed to get suggestions. Please try again.');
+        })
         .finally(() => setIsLoading(false));
     }
-  }, [isOpen, replies.length]);
+  }, [isOpen, replies.length, isLoading]);
 
   return (
     <>
@@ -55,6 +97,10 @@ export default function ChatWidget() {
                     <div className="flex items-center justify-center p-8">
                       <Loader className="h-8 w-8 animate-spin text-primary" />
                     </div>
+                  ) : error ? (
+                     <div className="text-center text-sm text-destructive p-4">
+                        {error}
+                     </div>
                   ) : (
                     <div className="flex flex-col gap-2">
                       {replies.map((reply) => (
@@ -65,7 +111,8 @@ export default function ChatWidget() {
                           className="justify-start"
                         >
                           <a href={reply.url} target="_blank" rel="noopener noreferrer">
-                            {reply.label}
+                            {getIconForReply(reply.label)}
+                            <span>{reply.label}</span>
                             <ExternalLink className="ml-auto h-4 w-4 text-muted-foreground" />
                           </a>
                         </Button>
