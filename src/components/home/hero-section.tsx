@@ -61,7 +61,7 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
           aria-label={TAGLINE}
-          className="font-headline text-5xl font-bold tracking-tight text-white sm:text-7xl md:text-8xl"
+          className="font-headline text-6xl font-bold tracking-tight text-white sm:text-8xl md:text-9xl"
         >
           {TAGLINE.split('').map((char, index) => (
             <motion.span key={index} variants={letterAnimation} className="inline-block">
