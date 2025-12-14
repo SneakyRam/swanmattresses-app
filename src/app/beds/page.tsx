@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -15,20 +15,47 @@ const heroImage = PlaceHolderImages.find((img) => img.id === 'category-bed');
 
 // Dummy data for now
 const beds = [
-  { id: '5', name: 'Majestic Wooden Frame', price: 45999, rating: 4.8, reviews: 80, imageId: 'product-1', href: '/product/majestic-wooden-frame' },
-  { id: '6', name: 'Plush Upholstered Bed', price: 52999, oldPrice: 60000, rating: 4.9, reviews: 110, imageId: 'product-2', href: '/product/plush-upholstered-bed' },
-  { id: '7', name: 'Smart Storage Bed', price: 59999, rating: 4.7, reviews: 95, imageId: 'product-3', href: '/product/smart-storage-bed' },
-  { id: '8', name: 'Minimalist Platform Bed', price: 38999, rating: 4.8, reviews: 65, imageId: 'product-4', href: '/product/minimalist-platform-bed' },
+  { id: '5', name: 'Majestic Wooden Frame', price: 45999, rating: 4.8, reviews: 80, imageId: 'product-1', href: '/product/majestic-wooden-frame', category: 'Wooden', material: 'Solid Wood', size: 'King' },
+  { id: '6', name: 'Plush Upholstered Bed', price: 52999, oldPrice: 60000, rating: 4.9, reviews: 110, imageId: 'product-2', href: '/product/plush-upholstered-bed', category: 'Upholstered', material: 'Fabric', size: 'Queen' },
+  { id: '7', name: 'Smart Storage Bed', price: 59999, rating: 4.7, reviews: 95, imageId: 'product-3', href: '/product/smart-storage-bed', category: 'Storage', material: 'Solid Wood', size: 'Queen' },
+  { id: '8', name: 'Minimalist Platform Bed', price: 38999, rating: 4.8, reviews: 65, imageId: 'product-4', href: '/product/minimalist-platform-bed', category: 'Wooden', material: 'Metal', size: 'Double' },
 ];
 
 
 export default function BedsPage() {
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState<any>({});
   const [sort, setSort] = useState('popularity');
+
+  const filteredBeds = useMemo(() => {
+    return beds.filter(bed => {
+      // Category filter
+      if (filters.category?.length > 0 && !filters.category.includes(bed.category)) {
+        return false;
+      }
+      // Price filter
+      if (filters.price) {
+        if (bed.price < filters.price[0] || bed.price > filters.price[1]) {
+          return false;
+        }
+      }
+      // Rating filter
+      if (filters.ratings?.length > 0 && !filters.ratings.some((r: number) => bed.rating >= r)) {
+        return false;
+      }
+       // Size filter
+      if (filters.size?.length > 0 && !filters.size.includes(bed.size)) {
+        return false;
+      }
+       // Material filter
+      if (filters.material?.length > 0 && !filters.material.includes(bed.material)) {
+        return false;
+      }
+      return true;
+    });
+  }, [filters]);
 
   const handleFilterChange = (newFilters: any) => {
     setFilters(newFilters);
-    // Here you would typically refetch data
   };
 
   const handleSortChange = (newSort: string) => {
@@ -123,10 +150,19 @@ export default function BedsPage() {
             <FilterSidebar />
           </aside>
           <div className="md:col-span-3">
-            <ProductGrid products={beds} />
+             {filteredBeds.length > 0 ? (
+                <ProductGrid products={filteredBeds} />
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full text-center py-16">
+                  <h3 className="font-bold text-xl">No Products Found</h3>
+                  <p className="text-muted-foreground mt-2">Try adjusting your filters to find what you're looking for.</p>
+                </div>
+              )}
           </div>
         </div>
       </main>
     </div>
   );
 }
+
+    

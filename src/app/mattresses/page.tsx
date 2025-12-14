@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -16,19 +16,42 @@ const heroImage = PlaceHolderImages.find((img) => img.id === 'category-mattress'
 
 // Dummy data, to be replaced by Firebase
 const mattresses = [
-  { id: '1', name: 'CloudComfort Premium', price: 25999, oldPrice: 32999, rating: 4.8, reviews: 120, imageId: 'product-1', href: '/product/cloudcomfort-premium' },
-  { id: '2', name: 'OrthoDream Support', price: 18999, rating: 4.9, reviews: 250, imageId: 'product-2', href: '/product/orthodream-support' },
-  { id: '3', name: 'LuxeSleep Gel Memory', price: 29999, oldPrice: 38999, rating: 4.7, reviews: 98, imageId: 'product-3', href: '/product/luxesleep-gel-memory' },
-  { id: '4', name: 'EcoRest Organic Latex', price: 34999, rating: 4.9, reviews: 75, imageId: 'product-4', href: '/product/ecorest-organic-latex' },
+  { id: '1', name: 'CloudComfort Premium', price: 25999, oldPrice: 32999, rating: 4.8, reviews: 120, imageId: 'product-1', href: '/product/cloudcomfort-premium', category: 'Foam', size: 'Queen' },
+  { id: '2', name: 'OrthoDream Support', price: 18999, rating: 4.9, reviews: 250, imageId: 'product-2', href: '/product/orthodream-support', category: 'Spring', size: 'King' },
+  { id: '3', name: 'LuxeSleep Gel Memory', price: 29999, oldPrice: 38999, rating: 4.7, reviews: 98, imageId: 'product-3', href: '/product/luxesleep-gel-memory', category: 'Hybrid', size: 'Queen' },
+  { id: '4', name: 'EcoRest Organic Latex', price: 34999, rating: 4.9, reviews: 75, imageId: 'product-4', href: '/product/ecorest-organic-latex', category: 'Latex', size: 'Single' },
 ];
 
 export default function MattressesPage() {
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState<any>({});
   const [sort, setSort] = useState('popularity');
+
+  const filteredMattresses = useMemo(() => {
+    return mattresses.filter(mattress => {
+      // Category filter
+      if (filters.category?.length > 0 && !filters.category.includes(mattress.category)) {
+        return false;
+      }
+      // Price filter
+      if (filters.price) {
+        if (mattress.price < filters.price[0] || mattress.price > filters.price[1]) {
+          return false;
+        }
+      }
+      // Rating filter
+      if (filters.ratings?.length > 0 && !filters.ratings.some((r: number) => mattress.rating >= r)) {
+        return false;
+      }
+      // Size filter
+      if (filters.size?.length > 0 && !filters.size.includes(mattress.size)) {
+        return false;
+      }
+      return true;
+    });
+  }, [filters]);
 
   const handleFilterChange = (newFilters: any) => {
     setFilters(newFilters);
-    // Here you would typically refetch data based on filters
   };
 
   const handleSortChange = (newSort: string) => {
@@ -142,10 +165,19 @@ export default function MattressesPage() {
             <FilterSidebar />
           </aside>
           <div className="md:col-span-3">
-            <ProductGrid products={mattresses} />
+             {filteredMattresses.length > 0 ? (
+                <ProductGrid products={filteredMattresses} />
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full text-center py-16">
+                  <h3 className="font-bold text-xl">No Products Found</h3>
+                  <p className="text-muted-foreground mt-2">Try adjusting your filters to find what you're looking for.</p>
+                </div>
+              )}
           </div>
         </div>
       </main>
     </div>
   );
 }
+
+    

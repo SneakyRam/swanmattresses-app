@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -15,15 +15,39 @@ const heroImage = PlaceHolderImages.find((img) => img.id === 'category-sofa');
 
 // Dummy data
 const sofas = [
-  { id: '9', name: 'Modern L-Shape Sofa', price: 79999, rating: 4.9, reviews: 150, imageId: 'product-3', href: '/product/modern-l-shape-sofa' },
-  { id: '10', name: 'Classic 3-Seater Sofa', price: 65000, oldPrice: 72000, rating: 4.8, reviews: 200, imageId: 'product-4', href: '/product/classic-3-seater-sofa' },
-  { id: '11', name: 'Cozy 2-Seater Loveseat', price: 48000, rating: 4.7, reviews: 120, imageId: 'product-1', href: '/product/cozy-2-seater-loveseat' },
-  { id: '12', name: 'Convertible Sofa Bed', price: 55000, rating: 4.6, reviews: 90, imageId: 'product-2', href: '/product/convertible-sofa-bed' },
+  { id: '9', name: 'Modern L-Shape Sofa', price: 79999, rating: 4.9, reviews: 150, imageId: 'product-3', href: '/product/modern-l-shape-sofa', category: 'L-Shaped', material: 'Fabric' },
+  { id: '10', name: 'Classic 3-Seater Sofa', price: 65000, oldPrice: 72000, rating: 4.8, reviews: 200, imageId: 'product-4', href: '/product/classic-3-seater-sofa', category: '3-Seater', material: 'Leatherette' },
+  { id: '11', name: 'Cozy 2-Seater Loveseat', price: 48000, rating: 4.7, reviews: 120, imageId: 'product-1', href: '/product/cozy-2-seater-loveseat', category: '2-Seater', material: 'Velvet' },
+  { id: '12', name: 'Convertible Sofa Bed', price: 55000, rating: 4.6, reviews: 90, imageId: 'product-2', href: '/product/convertible-sofa-bed', category: 'Sofa Bed', material: 'Fabric' },
 ];
 
 export default function SofasPage() {
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState<any>({});
   const [sort, setSort] = useState('popularity');
+
+  const filteredSofas = useMemo(() => {
+    return sofas.filter(sofa => {
+      // Category filter
+      if (filters.category?.length > 0 && !filters.category.includes(sofa.category)) {
+        return false;
+      }
+      // Price filter
+      if (filters.price) {
+        if (sofa.price < filters.price[0] || sofa.price > filters.price[1]) {
+          return false;
+        }
+      }
+      // Rating filter
+      if (filters.ratings?.length > 0 && !filters.ratings.some((r: number) => sofa.rating >= r)) {
+        return false;
+      }
+      // Material filter
+      if (filters.material?.length > 0 && !filters.material.includes(sofa.material)) {
+        return false;
+      }
+      return true;
+    });
+  }, [filters]);
 
   const handleFilterChange = (newFilters: any) => {
     setFilters(newFilters);
@@ -118,10 +142,19 @@ export default function SofasPage() {
             <FilterSidebar />
           </aside>
           <div className="md:col-span-3">
-            <ProductGrid products={sofas} />
+             {filteredSofas.length > 0 ? (
+                <ProductGrid products={filteredSofas} />
+              ) : (
+                <div className="flex flex-col items-center justify-center h-full text-center py-16">
+                  <h3 className="font-bold text-xl">No Products Found</h3>
+                  <p className="text-muted-foreground mt-2">Try adjusting your filters to find what you're looking for.</p>
+                </div>
+              )}
           </div>
         </div>
       </main>
     </div>
   );
 }
+
+    
