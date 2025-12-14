@@ -35,25 +35,25 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
   return (
     <div className="bg-background">
-      <div className="container py-8">
-        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link href="/" className="relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100">
+      <div className="container py-4 md:py-8">
+        <div className="flex items-center gap-1.5 text-xs text-muted-foreground sm:text-sm">
+          <Link href="/" className="hover:text-foreground">
             Home
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <Link href="/shop" className="relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100">
+          <Link href="/shop" className="hover:text-foreground">
             Shop
           </Link>
            <ChevronRight className="h-4 w-4" />
-          <Link href={`/${product.category.toLowerCase()}`} className="relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100">
+          <Link href={`/${product.category.toLowerCase()}`} className="hover:text-foreground">
             {product.category}
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <span className="text-foreground">{product.name}</span>
+          <span className="text-foreground truncate">{product.name}</span>
         </div>
       </div>
 
-      <div className="container grid grid-cols-1 gap-12 md:grid-cols-2">
+      <div className="container grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
         <div>
           <div className="overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
             <div className="p-0">
@@ -68,7 +68,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   />
                 )}
                 {product.oldPrice && (
-                  <Badge variant="destructive" className="absolute top-4 left-4">
+                  <Badge variant="destructive" className="absolute top-3 left-3 sm:top-4 sm:left-4">
                     SALE
                   </Badge>
                 )}
@@ -78,11 +78,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
 
         <div>
-          <h1 className="font-headline text-3xl font-bold md:text-4xl">
+          <h1 className="font-headline text-2xl font-bold md:text-4xl">
             {product.name}
           </h1>
 
-          <div className="mt-4 flex items-center gap-4">
+          <div className="mt-2 flex items-center gap-4">
             <div className="flex items-center gap-1">
               <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
               <span className="font-semibold">{product.rating}</span>
@@ -92,22 +92,22 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             </div>
           </div>
 
-          <div className="mt-6 flex items-baseline gap-3">
+          <div className="mt-4 flex items-baseline gap-2">
             <span className="text-3xl font-bold text-primary">
               {formatPrice(product.price)}
             </span>
             {product.oldPrice && (
-              <span className="text-xl text-muted-foreground line-through">
+              <span className="text-lg text-muted-foreground line-through">
                 {formatPrice(product.oldPrice)}
               </span>
             )}
           </div>
 
-          <p className="mt-6 text-base leading-relaxed text-muted-foreground">
+          <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             {product.description}
           </p>
 
-          <ul className="mt-6 space-y-2 text-sm text-muted-foreground">
+          <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             {product.features.map((feature) => (
               <li key={feature} className="flex items-center gap-2">
                 <CheckIcon className="h-4 w-4 text-primary" />
@@ -116,12 +116,12 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             ))}
           </ul>
 
-          <div className="mt-8">
+          <div className="mt-6">
             <PurchaseInquiryDialog productName={product.name} />
           </div>
         </div>
       </div>
-      <div className="mt-16">
+      <div className="mt-12 md:mt-16">
         <BestSellers title="You Might Also Like" currentProductId={product.id} />
       </div>
     </div>

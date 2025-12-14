@@ -16,7 +16,7 @@ interface SortDropdownProps {
 export default function SortDropdown({ value, onValueChange }: SortDropdownProps) {
   return (
     <Select value={value} onValueChange={onValueChange}>
-      <SelectTrigger className="w-[180px]">
+      <SelectTrigger className="w-[140px] sm:w-[180px]">
         <SelectValue placeholder="Sort by" />
       </SelectTrigger>
       <SelectContent>

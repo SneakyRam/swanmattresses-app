@@ -74,7 +74,7 @@ export default function ShopPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7 }}
-                className="font-headline text-4xl font-bold md:text-5xl"
+                className="font-headline text-3xl font-bold md:text-5xl"
             >
                 Explore Our Collection
             </motion.h1>
@@ -82,7 +82,7 @@ export default function ShopPage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.2 }}
-                className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground"
+                className="mx-auto mt-4 max-w-2xl text-base text-muted-foreground"
             >
                 Find the perfect centerpiece for your home, from the bedroom to the living room.
             </motion.p>
@@ -91,27 +91,27 @@ export default function ShopPage() {
 
       <main className="container py-8">
         <div className="flex items-center justify-between border-b pb-4">
-          <div className="flex items-center gap-4">
+          <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
+            All Products
+          </h1>
+          <div className="flex items-center gap-2 sm:gap-4">
             <div className="md:hidden">
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="outline" size="icon">
-                    <SlidersHorizontal className="h-4 w-4" />
-                    <span className="sr-only">Filters</span>
+                  <Button variant="outline" size="sm">
+                    <SlidersHorizontal className="mr-2 h-4 w-4" />
+                    Filters
                   </Button>
                 </SheetTrigger>
-                <SheetContent>
+                <SheetContent className="w-[300px]">
                     <div className="mt-8">
                         <FilterSidebar />
                     </div>
                 </SheetContent>
               </Sheet>
             </div>
-            <h1 className="text-xl font-bold tracking-tight sm:text-2xl">
-              All Products
-            </h1>
+            <SortDropdown value={sort} onValueChange={handleSortChange} />
           </div>
-          <SortDropdown value={sort} onValueChange={handleSortChange} />
         </div>
 
         <div className="grid grid-cols-1 gap-8 pt-8 md:grid-cols-4 lg:grid-cols-5">

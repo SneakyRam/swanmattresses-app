@@ -23,7 +23,7 @@ export default function AboutPage() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="relative h-[50vh] min-h-[300px] bg-cover bg-center"
+        className="relative h-[40vh] min-h-[250px] bg-cover bg-center"
       >
         {aboutImage && (
           <Image
@@ -49,7 +49,7 @@ export default function AboutPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-4 max-w-2xl text-lg text-slate-200"
+            className="mt-4 max-w-xl px-4 text-base text-slate-200 md:text-lg"
           >
             Crafting premium sleep experiences from the heart of India.
           </motion.p>
@@ -62,21 +62,21 @@ export default function AboutPage() {
         whileInView="animate"
         viewport={{ once: true, amount: 0.3 }}
         variants={fadeIn}
-        className="container py-16 md:py-24"
+        className="container py-12 md:py-24"
       >
         <div className="mx-auto max-w-3xl text-center">
           <h2 className="font-headline text-3xl font-bold md:text-4xl">
             Welcome to {BRAND_NAME}
           </h2>
-          <p className="mt-6 text-lg leading-8 text-muted-foreground">
+          <p className="mt-6 text-base leading-7 text-muted-foreground">
             Founded on the principle that luxury and comfort should be accessible to all, {BRAND_NAME} began its journey in a small workshop in Rampally, Telangana. Our passion for quality craftsmanship and innovative design drives us to create furniture that doesn’t just fill a room, but transforms it into a sanctuary of relaxation.
           </p>
         </div>
       </motion.section>
 
       {/* Mission & Values */}
-      <section className="bg-secondary py-16 md:py-24">
-        <div className="container grid gap-12 md:grid-cols-3">
+      <section className="bg-secondary py-12 md:py-24">
+        <div className="container grid gap-10 md:grid-cols-3">
           <motion.div
             initial="initial"
             whileInView="animate"
@@ -85,9 +85,9 @@ export default function AboutPage() {
             transition={{ ...fadeIn.transition, delay: 0.2 }}
             className="text-center"
           >
-            <Award className="mx-auto h-12 w-12 text-primary" />
-            <h3 className="mt-4 font-headline text-2xl font-semibold">Our Mission</h3>
-            <p className="mt-2 text-muted-foreground">
+            <Award className="mx-auto h-10 w-10 text-primary" />
+            <h3 className="mt-4 font-headline text-xl font-semibold">Our Mission</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               To deliver unparalleled comfort and quality, enhancing the well-being of our customers through meticulously crafted sleep and seating solutions.
             </p>
           </motion.div>
@@ -99,9 +99,9 @@ export default function AboutPage() {
             transition={{ ...fadeIn.transition, delay: 0.4 }}
             className="text-center"
           >
-            <Users className="mx-auto h-12 w-12 text-primary" />
-            <h3 className="mt-4 font-headline text-2xl font-semibold">Our Values</h3>
-            <p className="mt-2 text-muted-foreground">
+            <Users className="mx-auto h-10 w-10 text-primary" />
+            <h3 className="mt-4 font-headline text-xl font-semibold">Our Values</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Integrity, innovation, and customer-centricity are at the core of everything we do. We believe in building lasting relationships based on trust.
             </p>
           </motion.div>
@@ -113,9 +113,9 @@ export default function AboutPage() {
             transition={{ ...fadeIn.transition, delay: 0.6 }}
             className="text-center"
           >
-            <MapPin className="mx-auto h-12 w-12 text-primary" />
-            <h3 className="mt-4 font-headline text-2xl font-semibold">Our Roots</h3>
-            <p className="mt-2 text-muted-foreground">
+            <MapPin className="mx-auto h-10 w-10 text-primary" />
+            <h3 className="mt-4 font-headline text-xl font-semibold">Our Roots</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Proudly based in {STORE_LOCATION}. We combine local craftsmanship with global standards to bring you the best in home comfort.
             </p>
           </motion.div>
@@ -123,7 +123,7 @@ export default function AboutPage() {
       </section>
 
       {/* Why Swan */}
-      <section className="container py-16 md:py-24">
+      <section className="container py-12 md:py-24">
           <WhySwan />
       </section>
     </div>
@@ -153,7 +153,7 @@ const WhySwan = () => {
     return (
         <div className="mx-auto max-w-4xl text-center">
             <h2 className="font-headline text-3xl font-bold md:text-4xl">Why {BRAND_NAME}?</h2>
-             <p className="mt-4 text-lg leading-8 text-muted-foreground">
+             <p className="mt-4 text-base leading-7 text-muted-foreground">
               Experience the difference that true craftsmanship and dedication to comfort can make.
             </p>
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
@@ -165,11 +165,11 @@ const WhySwan = () => {
                       viewport={{ once: true, amount: 0.5 }}
                       variants={fadeIn}
                       transition={{ ...fadeIn.transition, delay: i * 0.2 }}
-                      className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
+                      className="rounded-lg border bg-card p-6 text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                     >
                         <feature.icon className="mx-auto h-10 w-10 text-primary" />
-                        <h3 className="mt-6 font-headline text-xl font-semibold">{feature.title}</h3>
-                        <p className="mt-2 text-muted-foreground">{feature.description}</p>
+                        <h3 className="mt-5 font-headline text-lg font-semibold">{feature.title}</h3>
+                        <p className="mt-2 text-sm text-muted-foreground">{feature.description}</p>
                     </motion.div>
                 ))}
             </div>

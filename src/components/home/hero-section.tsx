@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -56,7 +55,7 @@ export default function HeroSection() {
                   transition: { duration: 0.8, ease: 'easeOut' },
                 },
               }}
-              className="font-headline text-4xl font-bold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
+              className="font-headline text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-7xl lg:text-8xl"
             >
               <span className="animate-text-gradient bg-gradient-to-r from-brand-300 via-brand-500 to-brand-300 bg-[200%_auto] bg-clip-text text-transparent leading-[1.1] sm:leading-[1.05]">
                 {TAGLINE_MAIN}
@@ -76,7 +75,7 @@ export default function HeroSection() {
                   transition: { duration: 0.7, delay: 0.15 },
                 },
               }}
-              className="mt-6 mx-auto max-w-xl text-lg text-slate-100 dark:text-slate-300 md:mx-0"
+              className="mt-4 mx-auto max-w-md text-base text-slate-100 dark:text-slate-300 md:mx-0 md:max-w-xl md:text-lg"
             >
               Discover handcrafted mattresses, beds, and sofas designed for
               unmatched comfort and lasting elegance.
@@ -92,7 +91,7 @@ export default function HeroSection() {
                   transition: { duration: 0.7, delay: 0.3 },
                 },
               }}
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
+              className="mt-8 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-3 sm:gap-4"
             >
               {/* Primary CTA */}
               <Button

@@ -27,17 +27,17 @@ export default function BestSellers({ title = "Our Best Sellers", currentProduct
     .slice(0, 4);
 
   return (
-    <section className="py-16 sm:py-24">
+    <section className="py-12 sm:py-24">
       <div className="container">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             {title}
           </h2>
-          <p className="mt-4 text-lg leading-8 text-muted-foreground">
+          <p className="mt-4 max-w-2xl mx-auto text-base leading-7 text-muted-foreground">
             {title === "Our Best Sellers" ? "Loved by our customers. Discover the products everyone is talking about." : "Check out these popular items."}
           </p>
         </div>
-        <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+        <div className="mt-10 grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-2 lg:grid-cols-4 sm:gap-x-6 lg:gap-x-8">
           {bestSellers.map((product) => {
             const image = PlaceHolderImages.find((img) => img.id === product.imageId);
             if (!image) return null;
@@ -53,31 +53,31 @@ export default function BestSellers({ title = "Our Best Sellers", currentProduct
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={image.imageHint}
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
                       />
                       {product.oldPrice && (
                         <Badge variant="destructive" className="absolute top-2 left-2">SALE</Badge>
                       )}
                        <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
-                    <div className="p-4 flex-grow flex flex-col">
-                      <h3 className="text-base font-semibold text-foreground">{product.name}</h3>
-                      <div className="mt-1 flex items-center gap-2">
-                        <p className="text-lg font-bold text-primary">{formatPrice(product.price)}</p>
+                    <div className="p-3 sm:p-4 flex-grow flex flex-col">
+                      <h3 className="text-sm sm:text-base font-semibold text-foreground leading-tight">{product.name}</h3>
+                      <div className="mt-1 flex flex-col sm:flex-row sm:items-center gap-1">
+                        <p className="text-base sm:text-lg font-bold text-primary">{formatPrice(product.price)}</p>
                         {product.oldPrice && (
-                          <p className="text-sm text-muted-foreground line-through">{formatPrice(product.oldPrice)}</p>
+                          <p className="text-xs sm:text-sm text-muted-foreground line-through">{formatPrice(product.oldPrice)}</p>
                         )}
                       </div>
-                      <div className="mt-2 flex items-center gap-1 text-sm text-muted-foreground">
+                      <div className="mt-2 flex items-center gap-1 text-xs text-muted-foreground">
                         <Star className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                         <span>{product.rating}</span>
-                        <span>({product.reviews} reviews)</span>
+                        <span className='hidden sm:inline'>({product.reviews} reviews)</span>
                       </div>
-                      <div className="mt-auto pt-4">
+                      <div className="mt-auto pt-3">
                         <TooltipProvider>
                           <Tooltip>
                             <TooltipTrigger asChild>
-                              <Button className="w-full" variant="outline" disabled>Add to Cart</Button>
+                              <Button className="w-full" variant="outline" size="sm" disabled>Add to Cart</Button>
                             </TooltipTrigger>
                             <TooltipContent>
                               <p>Coming Soon</p>

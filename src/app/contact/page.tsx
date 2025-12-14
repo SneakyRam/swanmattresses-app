@@ -63,12 +63,12 @@ function ContactForm() {
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
-      className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm"
+      className="rounded-lg border bg-card p-6 md:p-8 text-card-foreground shadow-sm"
     >
-      <h2 className="font-headline text-3xl font-bold">Send Us a Message</h2>
-      <p className="mt-2 text-muted-foreground">We'll get back to you as soon as possible.</p>
+      <h2 className="font-headline text-2xl md:text-3xl font-bold">Send Us a Message</h2>
+      <p className="mt-2 text-sm md:text-base text-muted-foreground">We'll get back to you as soon as possible.</p>
       <Form {...form}>
-        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-6">
+        <form onSubmit={form.handleSubmit(onSubmit)} className="mt-6 space-y-4">
           <FormField
             control={form.control}
             name="name"
@@ -102,7 +102,7 @@ function ContactForm() {
               <FormItem>
                 <FormLabel>Your Message</FormLabel>
                 <FormControl>
-                  <Textarea placeholder="How can we help you today?" {...field} rows={6} />
+                  <Textarea placeholder="How can we help you today?" {...field} rows={5} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -128,7 +128,7 @@ export default function ContactPage() {
   return (
     <div className="bg-background">
       {/* Hero Section */}
-      <section className="bg-secondary py-16 md:py-24">
+      <section className="bg-secondary py-12 md:py-24">
         <div className="container text-center">
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -142,7 +142,7 @@ export default function ContactPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2 }}
-            className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground"
+            className="mx-auto mt-4 max-w-2xl text-base md:text-lg text-muted-foreground"
           >
             We're here to help with any questions you may have. Reach out to us, and we'll respond as soon as we can.
           </motion.p>
@@ -150,8 +150,8 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content */}
-      <section className="container py-16 md:py-24">
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-5">
+      <section className="container py-12 md:py-24">
+        <div className="grid grid-cols-1 gap-12 md:grid-cols-5 md:gap-16">
           {/* Contact Form */}
           <div className="md:col-span-3">
              {isClient && <ContactForm />}
@@ -164,43 +164,43 @@ export default function ContactPage() {
             transition={{ duration: 0.8, ease: 'easeOut' }}
             className="md:col-span-2"
           >
-            <h2 className="font-headline text-3xl font-bold">Contact Information</h2>
-            <p className="mt-2 text-muted-foreground">Find us here or follow our journey online.</p>
-            <div className="mt-8 space-y-6">
+            <h2 className="font-headline text-2xl md:text-3xl font-bold">Contact Information</h2>
+            <p className="mt-2 text-sm md:text-base text-muted-foreground">Find us here or follow our journey online.</p>
+            <div className="mt-8 space-y-4">
               {contactInfo.map((item, index) => (
                 <Link
                   key={index}
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-4 text-lg transition-colors hover:text-primary relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100"
+                  className="flex items-start gap-4 text-base transition-colors hover:text-primary relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100"
                 >
-                  <item.icon className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
+                  <item.icon className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                   <span>{item.text}</span>
                 </Link>
               ))}
             </div>
             
-            <div className="mt-10 space-y-4">
+            <div className="mt-8 space-y-4">
                  {socialLinks.map((item, index) => (
                     <Link
                       key={index}
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-4 text-lg transition-colors hover:text-primary relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100"
+                      className="flex items-center gap-4 text-base transition-colors hover:text-primary relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100"
                     >
-                      <item.icon className="h-6 w-6 flex-shrink-0 text-primary" />
+                      <item.icon className="h-5 w-5 flex-shrink-0 text-primary" />
                       <span>{item.text}</span>
                     </Link>
                   ))}
             </div>
-             <div className="mt-12">
-              <h3 className="font-headline text-2xl font-bold">Visit Our Store</h3>
-              <p className="mt-2 text-muted-foreground">{STORE_LOCATION}</p>
+             <div className="mt-10">
+              <h3 className="font-headline text-xl md:text-2xl font-bold">Visit Our Store</h3>
+              <p className="mt-2 text-sm md:text-base text-muted-foreground">{STORE_LOCATION}</p>
               {/* Google Map */}
               <Link href={STORE_LOCATION_URL} target="_blank" rel="noopener noreferrer">
-                <div className="mt-4 h-80 w-full overflow-hidden rounded-lg border shadow-sm transition-shadow hover:shadow-lg">
+                <div className="mt-4 h-64 md:h-80 w-full overflow-hidden rounded-lg border shadow-sm transition-shadow hover:shadow-lg">
                    <iframe
                       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.802315752319!2d78.601931!3d17.485122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9c148c155555%3A0x44d32f7903823032!2sSwan%20Mattresses%3A%20Manufacturers%20of%20Premium%20Mattresses%20%2C%20Sofas%20And%20Recliners!5e0!3m2!1sen!2sus!4v1722345678901!5m2!1sen!2sus"
                       width="100%"

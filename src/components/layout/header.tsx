@@ -1,4 +1,3 @@
-
 'use client';
 
 import Link from 'next/link';
@@ -32,9 +31,11 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="flex h-16 items-center px-4 sm:px-6 lg:px-8">
+      <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
-          <Logo width={120} height={40} />
+          <Link href="/">
+            <Logo width={120} height={40} />
+          </Link>
         </div>
 
         <div className="flex items-center md:hidden">
@@ -47,7 +48,9 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="left" className="w-full max-w-[300px]">
               <div className="mb-8">
-                <Logo width={120} height={40} />
+                 <Link href="/" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Logo width={120} height={40} />
+                 </Link>
               </div>
               <nav className="grid gap-4 text-lg font-medium">
                 {NAV_LINKS.map((link) => (
@@ -66,7 +69,9 @@ export default function Header() {
         </div>
 
         <div className="flex w-full items-center justify-center md:hidden">
-          <Logo width={100} height={35} />
+          <Link href="/">
+            <Logo width={100} height={35} />
+          </Link>
         </div>
 
         {/* Desktop Navigation */}
