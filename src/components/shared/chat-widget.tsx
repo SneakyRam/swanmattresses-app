@@ -121,7 +121,9 @@ export default function ChatWidget() {
                   )}
                 </CardContent>
                 <CardFooter className='justify-center'>
-                  <p className="text-xs text-muted-foreground">Powered by <Logo className='inline-flex text-xs' /></p>
+                  <div className="text-xs text-muted-foreground flex items-center gap-1">
+                    Powered by <Logo width={60} height={20} />
+                  </div>
                 </CardFooter>
               </Card>
             </motion.div>

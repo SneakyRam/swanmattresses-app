@@ -35,7 +35,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
-          <Logo />
+          <Logo width={120} height={40}/>
         </div>
 
         {/* Mobile Menu */}
@@ -49,7 +49,7 @@ export default function Header() {
             </SheetTrigger>
             <SheetContent side="left">
               <nav className="grid gap-6 text-lg font-medium pt-8">
-                <Logo />
+                <Logo width={120} height={40}/>
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
