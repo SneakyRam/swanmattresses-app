@@ -35,7 +35,7 @@ const aiChatAssistantFlow = ai.defineFlow(
     inputSchema: AIChatAssistantInputSchema,
     outputSchema: AIChatAssistantOutputSchema,
   },
-  async input => {
+  async (input) => {
     const llmResponse = await ai.generate({
       prompt: `You are a helpful AI chat assistant for ${input.brandName}. Your name is Swan AI.
 
@@ -45,11 +45,22 @@ Provide a set of smart replies to help users quickly connect with the brand. The
 - A link to call the store. The phone number is ${input.contactPhone}.
 - A link to the Facebook page. The URL is ${input.facebookLink}.
 
-Ensure the output is a valid JSON object with a "smartReplies" array. Each object in the array must have a "label" (e.g., "Chat on WhatsApp") and a "url" (e.g., "tel:${input.contactPhone}" for the phone call).
+Your output MUST be a valid JSON object matching the following Zod schema:
+{
+  "smartReplies": [
+    { "label": "Chat on WhatsApp", "url": "https://wa.me/..." },
+    { "label": "Visit our Instagram", "url": "https://instagram.com/..." },
+    { "label": "Call Us", "url": "tel:..." },
+    { "label": "Find us on Facebook", "url": "https://facebook.com/..." }
+  ]
+}
+
+Use the exact URLs and phone number provided. For the phone number, the URL must be in the "tel:" format (e.g., "tel:${input.contactPhone}").
 `,
       output: {
         schema: AIChatAssistantOutputSchema,
-      }
+      },
+      model: 'googleai/gemini-2.5-flash-latest'
     });
 
     return llmResponse.output!;
