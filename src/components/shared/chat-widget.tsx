@@ -7,7 +7,6 @@ import { MessageSquare, X, Loader, Bot, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { aiChatAssistant, type AIChatAssistantOutput } from '@/ai/flows/ai-chat-assistant';
-import { BRAND_NAME } from '@/lib/constants';
 import Logo from './logo';
 
 export default function ChatWidget() {
@@ -47,7 +46,7 @@ export default function ChatWidget() {
                     <Bot className="h-6 w-6" />
                   </div>
                   <div>
-                    <CardTitle className="font-headline text-lg">AI Assistant</CardTitle>
+                    <CardTitle className="font-headline text-lg">Swan AI</CardTitle>
                     <CardDescription>How can we help you?</CardDescription>
                   </div>
                 </CardHeader>

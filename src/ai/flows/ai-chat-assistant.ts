@@ -1,15 +1,16 @@
 'use server';
 
 /**
- * @fileOverview Implements the AI chat assistant flow with predefined smart replies and links to social media.
+ * @fileOverview Implements the Swan AI chat assistant flow with predefined smart replies for customer support.
  *
- * - aiChatAssistant - A function that returns predefined smart replies and social media links.
+ * - aiChatAssistant - A function that returns predefined smart replies for social media and contact options.
  * - AIChatAssistantInput - The input type for the aiChatAssistant function (currently empty).
- * - AIChatAssistantOutput - The return type for the aiChatAssistant function, containing smart replies and social media links.
+ * - AIChatAssistantOutput - The return type for the aiChatAssistant function, containing smart replies.
  */
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
+import { BRAND_NAME, CONTACT_PHONE, SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, WHATSAPP_LINK } from '@/lib/constants';
 
 const AIChatAssistantInputSchema = z.object({});
 export type AIChatAssistantInput = z.infer<typeof AIChatAssistantInputSchema>;
@@ -26,21 +27,19 @@ export async function aiChatAssistant(input: AIChatAssistantInput): Promise<AICh
   return aiChatAssistantFlow(input);
 }
 
-const aiChatAssistantPrompt = ai.definePrompt({
+const prompt = ai.definePrompt({
   name: 'aiChatAssistantPrompt',
   input: {schema: AIChatAssistantInputSchema},
   output: {schema: AIChatAssistantOutputSchema},
-  prompt: `You are a helpful AI chat assistant for Swan Mattresses. Provide a set of smart replies that can help users quickly find information or connect with the brand on social media.
+  prompt: `You are a helpful AI chat assistant for ${BRAND_NAME}. Your name is Swan AI.
 
-  The smart replies should include options to:
-  - Talk on WhatsApp
-  - Visit Instagram
-  - Call Store
-  - Visit Facebook
+Provide a set of smart replies to help users quickly connect with the brand. The replies should include:
+- A link to chat on WhatsApp. The URL is ${WHATSAPP_LINK}.
+- A link to the Instagram page. The URL is ${SOCIAL_INSTAGRAM}.
+- A link to call the store. The phone number is ${CONTACT_PHONE}.
+- A link to the Facebook page. The URL is ${SOCIAL_FACEBOOK}.
 
-  The URLs should point to the correct resources.
-
-  Format the output as a JSON object with a \"smartReplies\" array. Each smart reply should have a \"label\" and a \"url\" field.
+Ensure the output is a valid JSON object with a "smartReplies" array. Each object in the array must have a "label" (e.g., "Chat on WhatsApp") and a "url" (e.g., "tel:${CONTACT_PHONE}" for the phone call).
 `
 });
 
@@ -51,7 +50,7 @@ const aiChatAssistantFlow = ai.defineFlow(
     outputSchema: AIChatAssistantOutputSchema,
   },
   async input => {
-    const {output} = await aiChatAssistantPrompt(input);
+    const {output} = await prompt(input);
     return output!;
   }
 );
