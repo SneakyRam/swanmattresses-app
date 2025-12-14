@@ -24,6 +24,7 @@ import {
 } from '@/components/ui/card';
 import { aiChatAssistant, type AIChatAssistantOutput } from '@/ai/flows/ai-chat-assistant';
 import Logo from './logo';
+import { BRAND_NAME, CONTACT_PHONE, SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, WHATSAPP_LINK } from '@/lib/constants';
 
 const getIconForReply = (label: string) => {
   const lowerCaseLabel = label.toLowerCase();
@@ -54,7 +55,13 @@ export default function ChatWidget() {
     if (isOpen && replies.length === 0 && !isLoading) {
       setIsLoading(true);
       setError(null);
-      aiChatAssistant({})
+      aiChatAssistant({
+        brandName: BRAND_NAME,
+        whatsappLink: WHATSAPP_LINK,
+        instagramLink: SOCIAL_INSTAGRAM,
+        contactPhone: CONTACT_PHONE,
+        facebookLink: SOCIAL_FACEBOOK,
+      })
         .then((output) => {
           if (output?.smartReplies) {
             setReplies(output.smartReplies);
