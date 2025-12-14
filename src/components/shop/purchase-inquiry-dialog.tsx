@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { Loader2 } from 'lucide-react';
+import { Loader2, MessageSquare, Phone } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -26,6 +26,8 @@ import {
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { useToast } from '@/hooks/use-toast';
+import { Separator } from '../ui/separator';
+import { CONTACT_PHONE, WHATSAPP_LINK } from '@/lib/constants';
 
 const inquirySchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -84,7 +86,7 @@ export function PurchaseInquiryDialog({ productName }: PurchaseInquiryDialogProp
         <DialogHeader>
           <DialogTitle>Purchase Inquiry: {productName}</DialogTitle>
           <DialogDescription>
-            To purchase this item, please fill out the form below. Our sales team will contact you shortly to finalize the order.
+            To purchase this item, please fill out the form below or contact us directly. Our sales team will get in touch with you shortly.
           </DialogDescription>
         </DialogHeader>
         <Form {...form}>
@@ -153,6 +155,29 @@ export function PurchaseInquiryDialog({ productName }: PurchaseInquiryDialogProp
             </Button>
           </form>
         </Form>
+        
+        <div className="relative my-4">
+            <Separator />
+            <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-background px-2 text-xs text-muted-foreground">OR</span>
+        </div>
+
+        <div className="space-y-3">
+             <p className="text-center text-sm text-muted-foreground">Connect with us directly</p>
+             <div className="grid grid-cols-2 gap-4">
+                <Button variant="outline" asChild>
+                    <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                        <MessageSquare className="mr-2 h-4 w-4" />
+                        WhatsApp
+                    </a>
+                </Button>
+                <Button variant="outline" asChild>
+                    <a href={`tel:${CONTACT_PHONE}`}>
+                        <Phone className="mr-2 h-4 w-4" />
+                        Call Us
+                    </a>
+                </Button>
+            </div>
+        </div>
       </DialogContent>
     </Dialog>
   );
