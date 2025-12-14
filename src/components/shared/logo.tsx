@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -30,7 +31,6 @@ export default function Logo({
         alt={`${BRAND_NAME} logo`}
         width={width}
         height={height}
-        className="h-auto"
         priority
       />
     </Link>
