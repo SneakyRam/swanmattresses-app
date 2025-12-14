@@ -1,4 +1,3 @@
-
 'use client';
 
 import Image from 'next/image';
@@ -30,6 +29,7 @@ export default function HeroSection() {
         fill
         priority
         className="object-cover"
+        data-ai-hint={heroImage.imageHint}
       />
 
       {/* Theme-aware overlays */}
@@ -43,7 +43,7 @@ export default function HeroSection() {
         variants={{
           visible: { transition: { staggerChildren: 0.25 } },
         }}
-        className="relative z-10 max-w-3xl"
+        className="relative z-10"
       >
         {/* Headline */}
         <motion.h1
@@ -55,7 +55,7 @@ export default function HeroSection() {
               transition: { duration: 0.8, ease: 'easeOut' },
             },
           }}
-          className="font-headline text-5xl font-bold tracking-tight sm:text-7xl"
+          className="font-headline text-5xl font-bold tracking-tight sm:text-7xl md:text-8xl"
         >
           <span className="animate-text-gradient bg-gradient-to-r from-brand-300 via-brand-500 to-brand-300 bg-[200%_auto] bg-clip-text text-transparent leading-[1.1] sm:leading-[1.05]">
             {TAGLINE_MAIN}

@@ -20,6 +20,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Logo from '@/components/shared/logo';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 const NAV_LINKS = [
   { href: '/mattresses', label: 'Mattresses' },
@@ -37,9 +38,8 @@ export default function Header() {
         <div className="mr-4 hidden md:flex">
           <Logo width={120} height={40}/>
         </div>
-
-        {/* Mobile Menu */}
-        <div className="md:hidden">
+        
+        <div className="flex items-center md:hidden">
           <Sheet>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
@@ -47,9 +47,11 @@ export default function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left">
-              <nav className="grid gap-6 text-lg font-medium pt-8">
+            <SheetContent side="left" className='w-full max-w-[300px]'>
+              <div className='mb-8'>
                 <Logo width={120} height={40}/>
+              </div>
+              <nav className="grid gap-4 text-lg font-medium">
                 {NAV_LINKS.map((link) => (
                   <Link
                     key={link.href}
@@ -63,6 +65,11 @@ export default function Header() {
             </SheetContent>
           </Sheet>
         </div>
+
+        <div className="flex w-full items-center justify-center md:hidden">
+           <Logo width={100} height={35}/>
+        </div>
+
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -78,16 +85,37 @@ export default function Header() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2">
-          <Button variant="ghost" size="icon">
-            <Search className="h-5 w-5" />
-            <span className="sr-only">Search</span>
-          </Button>
-          <Button variant="ghost" size="icon" asChild>
-            <Link href="/cart">
-              <ShoppingCart className="h-5 w-5" />
-              <span className="sr-only">Shopping Cart</span>
-            </Link>
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div>
+                   <Button variant="ghost" size="icon" disabled>
+                    <Search className="h-5 w-5" />
+                    <span className="sr-only">Search</span>
+                  </Button>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Coming Soon</p>
+              </TooltipContent>
+            </Tooltip>
+
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div>
+                  <Button variant="ghost" size="icon" asChild>
+                    <Link href="/cart">
+                      <ShoppingCart className="h-5 w-5" />
+                      <span className="sr-only">Shopping Cart</span>
+                    </Link>
+                  </Button>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                 <p>Cart functionality coming soon</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

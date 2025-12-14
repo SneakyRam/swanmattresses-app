@@ -6,6 +6,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 const bestSellers = [
   { id: '1', name: 'CloudComfort Premium', price: 25999, oldPrice: 32999, rating: 4.8, reviews: 120, imageId: 'product-1', href: '/product/cloudcomfort-premium' },
@@ -65,7 +66,16 @@ export default function BestSellers() {
                         <span>({product.reviews} reviews)</span>
                       </div>
                       <div className="mt-auto pt-4">
-                        <Button className="w-full" variant="outline">Add to Cart</Button>
+                        <TooltipProvider>
+                          <Tooltip>
+                            <TooltipTrigger asChild>
+                              <Button className="w-full" variant="outline" disabled>Add to Cart</Button>
+                            </TooltipTrigger>
+                            <TooltipContent>
+                              <p>Coming Soon</p>
+                            </TooltipContent>
+                          </Tooltip>
+                        </TooltipProvider>
                       </div>
                     </div>
                   </CardContent>

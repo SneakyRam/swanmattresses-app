@@ -173,6 +173,9 @@ export default function MattressesPage() {
                   <p className="text-muted-foreground mt-2">Try adjusting your filters to find what you're looking for.</p>
                 </div>
               )}
+               <div className="mt-12 flex justify-center">
+                <Button variant="outline" disabled>Load More</Button>
+              </div>
           </div>
         </div>
       </main>

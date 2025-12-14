@@ -134,7 +134,7 @@ export default function ProductFilters({ filters, currentFilters, onFilterChange
                 {section.type === 'checkbox' && (
                   <div className="space-y-3">
                     {section.options?.map((option: any) => (
-                      <div key={option} className="flex items-center space-x-2">
+                      <div key={option} className="flex items-center gap-2">
                         <Checkbox
                           id={`${section.id}-${option}`}
                           checked={currentFilters[section.id]?.includes(option)}
@@ -150,7 +150,7 @@ export default function ProductFilters({ filters, currentFilters, onFilterChange
                 {section.type === 'rating' && (
                   <div className="space-y-3">
                      {section.options?.sort((a, b) => b - a).map((rating: any) => (
-                      <div key={rating} className="flex items-center space-x-2">
+                      <div key={rating} className="flex items-center gap-2">
                         <Checkbox
                             id={`rating-${rating}`}
                             checked={currentFilters.ratings?.includes(rating)}

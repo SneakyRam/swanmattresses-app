@@ -9,7 +9,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { useToast } from '@/hooks/use-toast';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 interface Product {
   id: string;
@@ -32,17 +32,12 @@ const cardVariants = {
 };
 
 export default function ProductCard({ product }: { product: Product }) {
-  const { toast } = useToast();
   const image = PlaceHolderImages.find((img) => img.id === product.imageId) || PlaceHolderImages[4];
 
-  const handleAddToCart = (e: React.MouseEvent) => {
+  const handleQuickAdd = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    toast({
-      title: 'Added to Cart',
-      description: `${product.name} has been added to your cart.`,
-    });
-    // Add to cart logic here
+    // Quick add logic would go here, for now it's disabled.
   };
   
   return (
@@ -69,10 +64,22 @@ export default function ProductCard({ product }: { product: Product }) {
                 <Badge variant="destructive" className="absolute top-2 left-2">SALE</Badge>
               )}
                <div className="absolute bottom-2 right-2 flex items-center justify-center opacity-0 transition-all duration-300 group-hover:opacity-100 group-hover:bottom-4">
-                <Button size="sm" onClick={handleAddToCart}>
-                    <ShoppingCart className="mr-2 h-4 w-4" />
-                    Quick Add
-                </Button>
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      {/* Using a div wrapper to allow tooltip on disabled button */}
+                      <div>
+                        <Button size="sm" onClick={handleQuickAdd} disabled>
+                            <ShoppingCart className="mr-2 h-4 w-4" />
+                            Quick Add
+                        </Button>
+                      </div>
+                    </TooltipTrigger>
+                    <TooltipContent>
+                      <p>Coming Soon</p>
+                    </TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
             </div>
             </div>
             <div className="flex flex-grow flex-col p-4">
