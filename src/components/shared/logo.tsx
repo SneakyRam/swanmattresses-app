@@ -26,7 +26,7 @@ export default function Logo({
       aria-label={`${BRAND_NAME} homepage`}
     >
       <Image
-        src="/logo.svg"
+        src="/swan.svg"
         alt={`${BRAND_NAME} logo`}
         width={width}
         height={height}
