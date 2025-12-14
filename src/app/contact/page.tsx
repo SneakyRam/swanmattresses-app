@@ -200,14 +200,14 @@ export default function ContactPage() {
               {/* Google Map */}
               <div className="mt-4 h-80 w-full overflow-hidden rounded-lg border shadow-sm">
                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15220.198285514013!2d78.5838573403328!3d17.481657065961604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9c09c95c8269%3A0xe5a6624838634139!2sRampally%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1689885808795!5m2!1sen!2sus"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.802315752319!2d78.601931!3d17.485122!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9c148c155555%3A0x44d32f7903823032!2sSwan%20Mattresses%20And%20Sofas%20Manufacturer!5e0!3m2!1sen!2sus!4v1721323315883!5m2!1sen!2sus"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
                     allowFullScreen={false}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
-                    title="Store Location"
+                    title="Swan Mattresses Store Location"
                   ></iframe>
               </div>
             </div>
