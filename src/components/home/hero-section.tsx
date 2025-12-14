@@ -54,14 +54,14 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative z-10 flex w-full flex-col items-center"
+        className="relative z-10 flex flex-col items-center"
       >
         <motion.h1
           variants={animatedText}
           initial="hidden"
           animate="visible"
           aria-label={TAGLINE}
-          className="font-headline text-6xl font-bold tracking-tight text-white sm:text-8xl md:text-9xl"
+          className="font-headline text-8xl font-bold tracking-tight text-white sm:text-9xl"
         >
           {TAGLINE.split('').map((char, index) => (
             <motion.span key={index} variants={letterAnimation} className="inline-block">
