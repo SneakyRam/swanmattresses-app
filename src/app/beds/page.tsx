@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -10,16 +11,10 @@ import SortDropdown from '@/components/shop/sort-dropdown';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { SlidersHorizontal } from 'lucide-react';
+import { allProducts } from '@/lib/products';
 
 const heroImage = PlaceHolderImages.find((img) => img.id === 'category-bed');
-
-// Dummy data for now
-const beds = [
-  { id: '5', name: 'Majestic Wooden Frame', price: 45999, rating: 4.8, reviews: 80, imageId: 'product-1', href: '/product/majestic-wooden-frame', category: 'Wooden', material: 'Solid Wood', size: 'King' },
-  { id: '6', name: 'Plush Upholstered Bed', price: 52999, oldPrice: 60000, rating: 4.9, reviews: 110, imageId: 'product-2', href: '/product/plush-upholstered-bed', category: 'Upholstered', material: 'Fabric', size: 'Queen' },
-  { id: '7', name: 'Smart Storage Bed', price: 59999, rating: 4.7, reviews: 95, imageId: 'product-3', href: '/product/smart-storage-bed', category: 'Storage', material: 'Solid Wood', size: 'Queen' },
-  { id: '8', name: 'Minimalist Platform Bed', price: 38999, rating: 4.8, reviews: 65, imageId: 'product-4', href: '/product/minimalist-platform-bed', category: 'Wooden', material: 'Metal', size: 'Double' },
-];
+const beds = allProducts.filter(p => p.category === 'Beds');
 
 
 export default function BedsPage() {
@@ -28,8 +23,8 @@ export default function BedsPage() {
 
   const filteredBeds = useMemo(() => {
     return beds.filter(bed => {
-      // Category filter
-      if (filters.category?.length > 0 && !filters.category.includes(bed.category)) {
+      // Category filter is based on material for beds
+      if (filters.category?.length > 0 && !filters.category.includes(bed.material)) {
         return false;
       }
       // Price filter
@@ -44,10 +39,6 @@ export default function BedsPage() {
       }
        // Size filter
       if (filters.size?.length > 0 && !filters.size.includes(bed.size)) {
-        return false;
-      }
-       // Material filter
-      if (filters.material?.length > 0 && !filters.material.includes(bed.material)) {
         return false;
       }
       return true;
@@ -66,10 +57,10 @@ export default function BedsPage() {
   const FilterSidebar = () => (
     <ProductFilters
         filters={{
-          categories: ['Wooden', 'Upholstered', 'Storage'],
+          categories: ['Solid Wood', 'Fabric', 'Metal'],
           priceRange: { min: 15000, max: 80000 },
           ratings: [5, 4, 3],
-          materials: ['Solid Wood', 'Fabric', 'Metal', 'Leatherette'],
+          materials: [], // Using categories for materials
           sizes: ['Single', 'Double', 'Queen', 'King'],
         }}
         currentFilters={filters}
@@ -164,5 +155,3 @@ export default function BedsPage() {
     </div>
   );
 }
-
-    

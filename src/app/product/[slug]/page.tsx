@@ -1,3 +1,5 @@
+
+import { notFound } from 'next/navigation';
 import { ChevronRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -6,24 +8,7 @@ import { Badge } from '@/components/ui/badge';
 import BestSellers from '@/components/home/best-sellers';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { PurchaseInquiryDialog } from '@/components/shop/purchase-inquiry-dialog';
-
-const product = {
-  id: '1',
-  name: 'CloudComfort Premium',
-  price: 25999,
-  oldPrice: 32999,
-  rating: 4.8,
-  reviews: 120,
-  imageId: 'product-1',
-  description:
-    'Experience the ultimate in comfort with the CloudComfort Premium mattress. Featuring our latest sleep technology, this mattress provides a cloud-like feel with the support your body needs. Wake up refreshed and ready to take on the day.',
-  features: [
-    'Advanced multi-layer foam construction',
-    'Cooling gel-infused top layer',
-    'Hypoallergenic materials',
-    '10-year warranty',
-  ],
-};
+import { allProducts } from '@/lib/products';
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('en-IN', {
@@ -33,7 +18,19 @@ const formatPrice = (price: number) => {
   }).format(price);
 };
 
+export async function generateStaticParams() {
+  return allProducts.map((product) => ({
+    slug: product.slug,
+  }));
+}
+
 export default function ProductPage({ params }: { params: { slug: string } }) {
+  const product = allProducts.find((p) => p.slug === params.slug);
+
+  if (!product) {
+    notFound();
+  }
+
   const image = PlaceHolderImages.find((img) => img.id === product.imageId);
 
   return (
@@ -46,6 +43,10 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           <ChevronRight className="h-4 w-4" />
           <Link href="/shop" className="relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100">
             Shop
+          </Link>
+           <ChevronRight className="h-4 w-4" />
+          <Link href={`/${product.category.toLowerCase()}`} className="relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100">
+            {product.category}
           </Link>
           <ChevronRight className="h-4 w-4" />
           <span className="text-foreground">{product.name}</span>
@@ -121,7 +122,7 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
         </div>
       </div>
       <div className="mt-16">
-        <BestSellers />
+        <BestSellers title="You Might Also Like" currentProductId={product.id} />
       </div>
     </div>
   );

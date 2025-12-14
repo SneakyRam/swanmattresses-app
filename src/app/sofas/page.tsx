@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -10,16 +11,10 @@ import SortDropdown from '@/components/shop/sort-dropdown';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { SlidersHorizontal } from 'lucide-react';
+import { allProducts } from '@/lib/products';
 
 const heroImage = PlaceHolderImages.find((img) => img.id === 'category-sofa');
-
-// Dummy data
-const sofas = [
-  { id: '9', name: 'Modern L-Shape Sofa', price: 79999, rating: 4.9, reviews: 150, imageId: 'product-3', href: '/product/modern-l-shape-sofa', category: 'L-Shaped', material: 'Fabric' },
-  { id: '10', name: 'Classic 3-Seater Sofa', price: 65000, oldPrice: 72000, rating: 4.8, reviews: 200, imageId: 'product-4', href: '/product/classic-3-seater-sofa', category: '3-Seater', material: 'Leatherette' },
-  { id: '11', name: 'Cozy 2-Seater Loveseat', price: 48000, rating: 4.7, reviews: 120, imageId: 'product-1', href: '/product/cozy-2-seater-loveseat', category: '2-Seater', material: 'Velvet' },
-  { id: '12', name: 'Convertible Sofa Bed', price: 55000, rating: 4.6, reviews: 90, imageId: 'product-2', href: '/product/convertible-sofa-bed', category: 'Sofa Bed', material: 'Fabric' },
-];
+const sofas = allProducts.filter(p => p.category === 'Sofas');
 
 export default function SofasPage() {
   const [filters, setFilters] = useState<any>({});
@@ -28,7 +23,7 @@ export default function SofasPage() {
   const filteredSofas = useMemo(() => {
     return sofas.filter(sofa => {
       // Category filter
-      if (filters.category?.length > 0 && !filters.category.includes(sofa.category)) {
+      if (filters.category?.length > 0 && !filters.category.includes(sofa.size)) {
         return false;
       }
       // Price filter
@@ -60,7 +55,7 @@ export default function SofasPage() {
   const FilterSidebar = () => (
     <ProductFilters
         filters={{
-          categories: ['L-Shaped', '2-Seater', '3-Seater', 'Sofa Bed'],
+          categories: ['L-Shape', '2-Seater', '3-Seater', 'Sofa Bed'],
           priceRange: { min: 30000, max: 120000 },
           ratings: [5, 4, 3],
           materials: ['Fabric', 'Leatherette', 'Velvet'],
@@ -156,5 +151,3 @@ export default function SofasPage() {
     </div>
   );
 }
-
-    

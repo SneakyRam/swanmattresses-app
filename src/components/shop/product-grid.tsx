@@ -1,17 +1,8 @@
+
 'use client';
 
+import { Product } from '@/lib/products';
 import ProductCard from './product-card';
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  oldPrice?: number;
-  rating: number;
-  reviews: number;
-  imageId: string;
-  href: string;
-}
 
 export default function ProductGrid({ products }: { products: Product[] }) {
   return (

@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -8,18 +9,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { SlidersHorizontal } from 'lucide-react';
 import { motion } from 'framer-motion';
-
-// Dummy data, to be replaced by Firebase
-const allProducts = [
-  { id: '1', name: 'CloudComfort Premium', price: 25999, oldPrice: 32999, rating: 4.8, reviews: 120, imageId: 'product-1', href: '/product/cloudcomfort-premium', category: 'Mattresses', material: 'Foam', size: 'Queen' },
-  { id: '2', name: 'OrthoDream Support', price: 18999, rating: 4.9, reviews: 250, imageId: 'product-2', href: '/product/orthodream-support', category: 'Mattresses', material: 'Latex', size: 'King' },
-  { id: '3', name: 'LuxeSleep Gel Memory', price: 29999, oldPrice: 38999, rating: 4.7, reviews: 98, imageId: 'product-3', href: '/product/luxesleep-gel-memory', category: 'Mattresses', material: 'Foam', size: 'Queen' },
-  { id: '4', name: 'EcoRest Organic Latex', price: 34999, rating: 4.9, reviews: 75, imageId: 'product-4', href: '/product/ecorest-organic-latex', category: 'Mattresses', material: 'Latex', size: 'Single' },
-  { id: '5', name: 'Majestic Wooden Frame', price: 45999, rating: 4.8, reviews: 80, imageId: 'product-1', href: '/product/majestic-wooden-frame', category: 'Beds', material: 'Solid Wood', size: 'King' },
-  { id: '6', name: 'Plush Upholstered Bed', price: 52999, oldPrice: 60000, rating: 4.9, reviews: 110, imageId: 'product-2', href: '/product/plush-upholstered-bed', category: 'Beds', material: 'Fabric', size: 'Queen' },
-  { id: '7', name: 'Modern L-Shape Sofa', price: 79999, rating: 4.9, reviews: 150, imageId: 'product-3', href: '/product/modern-l-shape-sofa', category: 'Sofas', material: 'Fabric', size: 'L-Shape' },
-  { id: '8', name: 'Classic 3-Seater Sofa', price: 65000, oldPrice: 72000, rating: 4.8, reviews: 200, imageId: 'product-4', href: '/product/classic-3-seater-sofa', category: 'Sofas', material: 'Leatherette', size: '3-Seater' },
-];
+import { allProducts } from '@/lib/products';
 
 export default function ShopPage() {
   const [filters, setFilters] = useState<any>({});
@@ -68,8 +58,8 @@ export default function ShopPage() {
         categories: ['Mattresses', 'Beds', 'Sofas'],
         priceRange: { min: 10000, max: 100000 },
         ratings: [5, 4, 3],
-        materials: ['Solid Wood', 'Fabric', 'Metal', 'Leatherette', 'Foam', 'Latex'],
-        sizes: ['Single', 'Double', 'Queen', 'King', 'L-Shape', '3-Seater', '2-Seater'],
+        materials: ['Solid Wood', 'Fabric', 'Metal', 'Leatherette', 'Foam', 'Latex', 'Spring', 'Hybrid', 'Velvet'],
+        sizes: ['Single', 'Double', 'Queen', 'King', 'L-Shape', '3-Seater', '2-Seater', 'Sofa Bed'],
       }}
       currentFilters={filters}
       onFilterChange={handleFilterChange}
@@ -147,5 +137,3 @@ export default function ShopPage() {
     </div>
   );
 }
-
-    

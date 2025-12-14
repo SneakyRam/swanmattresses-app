@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo } from 'react';
@@ -11,16 +12,11 @@ import SortDropdown from '@/components/shop/sort-dropdown';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { SlidersHorizontal } from 'lucide-react';
 import Link from 'next/link';
+import { allProducts } from '@/lib/products';
 
 const heroImage = PlaceHolderImages.find((img) => img.id === 'category-mattress');
+const mattresses = allProducts.filter(p => p.category === 'Mattresses');
 
-// Dummy data, to be replaced by Firebase
-const mattresses = [
-  { id: '1', name: 'CloudComfort Premium', price: 25999, oldPrice: 32999, rating: 4.8, reviews: 120, imageId: 'product-1', href: '/product/cloudcomfort-premium', category: 'Foam', size: 'Queen' },
-  { id: '2', name: 'OrthoDream Support', price: 18999, rating: 4.9, reviews: 250, imageId: 'product-2', href: '/product/orthodream-support', category: 'Spring', size: 'King' },
-  { id: '3', name: 'LuxeSleep Gel Memory', price: 29999, oldPrice: 38999, rating: 4.7, reviews: 98, imageId: 'product-3', href: '/product/luxesleep-gel-memory', category: 'Hybrid', size: 'Queen' },
-  { id: '4', name: 'EcoRest Organic Latex', price: 34999, rating: 4.9, reviews: 75, imageId: 'product-4', href: '/product/ecorest-organic-latex', category: 'Latex', size: 'Single' },
-];
 
 export default function MattressesPage() {
   const [filters, setFilters] = useState<any>({});
@@ -29,7 +25,7 @@ export default function MattressesPage() {
   const filteredMattresses = useMemo(() => {
     return mattresses.filter(mattress => {
       // Category filter
-      if (filters.category?.length > 0 && !filters.category.includes(mattress.category)) {
+      if (filters.category?.length > 0 && !filters.category.includes(mattress.material)) {
         return false;
       }
       // Price filter
@@ -182,5 +178,3 @@ export default function MattressesPage() {
     </div>
   );
 }
-
-    

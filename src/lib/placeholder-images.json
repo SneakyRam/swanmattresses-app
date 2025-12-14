@@ -25,28 +25,76 @@
       "imageHint": "elegant sofa"
     },
     {
-      "id": "product-1",
+      "id": "product-mattress-1",
       "description": "The 'CloudComfort' premium mattress.",
-      "imageUrl": "https://images.unsplash.com/photo-1688383454974-1aec959a5163?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwcmVtaXVtJTIwbWF0dHJlc3N8ZW58MHx8fHwxNzY1NzIwNDc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "premium mattress"
+      "imageUrl": "https://images.unsplash.com/photo-1579975001385-e6f9a0c8b919?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtdWx0aSUyMGxheWVyJTIwbWF0dHJlc3N8ZW58MHx8fHwxNzY1OTA5MjE1fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "multi-layer mattress"
     },
     {
-      "id": "product-2",
+      "id": "product-mattress-2",
       "description": "The 'OrthoDream' orthopedic mattress.",
-      "imageUrl": "https://images.unsplash.com/photo-1676956969614-a90a61930604?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b3J0aG9wZWRpYyUyMG1hdHRyZXNzfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1629162622953-83f5b74682c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvcnRob3BlZGljJTIwbWF0dHJlc3N8ZW58MHx8fHwxNzY1OTA5MjcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "orthopedic mattress"
     },
     {
-      "id": "product-3",
+      "id": "product-mattress-3",
       "description": "The 'LuxeSleep' gel memory foam mattress.",
-      "imageUrl": "https://images.unsplash.com/photo-1747494113438-5c87f8d5746b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZW1vcnklMjBmb2FtfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "memory foam"
+      "imageUrl": "https://images.unsplash.com/photo-1578895223454-95a898b98e16?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnZWwlMjBtZW1vcnklMjBmb2FtJTIwbWF0dHJlc3N8ZW58MHx8fHwxNzY1OTA5Mjk5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "gel memory"
     },
     {
-      "id": "product-4",
+      "id": "product-mattress-4",
       "description": "The 'EcoRest' organic latex mattress.",
       "imageUrl": "https://images.unsplash.com/photo-1691731052289-a81065740f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b3JnYW5pYyUyMG1hdHRyZXNzfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "organic mattress"
+    },
+    {
+      "id": "product-bed-1",
+      "description": "The 'Majestic' wooden frame bed.",
+      "imageUrl": "https://images.unsplash.com/photo-1594522855581-890e1f0d95e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b29kZW4lMjBiZWQlMjBmcmFtZXxlbnwwfHx8fDE3NjU5MDk0Mjd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wooden bed"
+    },
+    {
+      "id": "product-bed-2",
+      "description": "The 'Plush' upholstered bed.",
+      "imageUrl": "https://images.unsplash.com/photo-1595526114035-0d45ed16433d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx1cGhvbHN0ZXJlZCUyMGJlZHxlbnwwfHx8fDE3NjU5MDk0NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "upholstered bed"
+    },
+    {
+      "id": "product-bed-3",
+      "description": "The 'Smart Storage' bed.",
+      "imageUrl": "https://images.unsplash.com/photo-1633519899736-9d36881c0f73?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzdG9yYWdlJTIwYmVkfGVufDB8fHx8fDE3NjU5MDk0ODV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "storage bed"
+    },
+    {
+      "id": "product-bed-4",
+      "description": "The 'Minimalist Platform' bed.",
+      "imageUrl": "https://images.unsplash.com/photo-1615875638104-a69c4f88018f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwcGxhdGZvcm0lMjBiZWR8ZW58MHx8fHwxNzY1OTA5NTEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "platform bed"
+    },
+    {
+      "id": "product-sofa-1",
+      "description": "The 'Modern L-Shape' sofa.",
+      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6164a83639?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBsfGVufDB8fHx8MTc2NTkwOTU1NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern sofa"
+    },
+    {
+      "id": "product-sofa-2",
+      "description": "The 'Classic 3-Seater' sofa.",
+      "imageUrl": "https://images.unsplash.com/photo-1540574163024-57350f383245?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGFzc2ljJTIwc29mYXxlbnwwfHx8fDE3NjU5MDk1NzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "classic sofa"
+    },
+    {
+      "id": "product-sofa-3",
+      "description": "The 'Cozy 2-Seater' loveseat.",
+      "imageUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsb3Zlc2VhdHxlbnwwfHx8fDE3NjU5MDk1OTd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cozy loveseat"
+    },
+    {
+      "id": "product-sofa-4",
+      "description": "The 'Convertible Sofa' bed.",
+      "imageUrl": "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2ZhJTIwYmVkfGVufDB8fHx8fDE3NjU5MDk2MTl8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sofa bed"
     },
     {
       "id": "why-swan-quality",
@@ -63,7 +111,7 @@
     {
       "id": "why-swan-trust",
       "description": "Image representing customer trust and warranty.",
-      "imageUrl": "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxoYXBweSUyMGN1c3RvbWVyfGVufDB8fHx8MTc2NTY5OTY3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxoYXBweSUyMGN1c3RvbWVyfGVufDB8fHx8fDE3NjU2OTk2NzN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "happy customer"
     },
     {

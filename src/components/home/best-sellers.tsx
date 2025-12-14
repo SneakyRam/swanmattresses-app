@@ -1,3 +1,4 @@
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star } from 'lucide-react';
@@ -7,28 +8,33 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
-
-const bestSellers = [
-  { id: '1', name: 'CloudComfort Premium', price: 25999, oldPrice: 32999, rating: 4.8, reviews: 120, imageId: 'product-1', href: '/product/cloudcomfort-premium' },
-  { id: '2', name: 'OrthoDream Support', price: 18999, rating: 4.9, reviews: 250, imageId: 'product-2', href: '/product/orthodream-support' },
-  { id: '3', name: 'LuxeSleep Gel Memory', price: 29999, oldPrice: 38999, rating: 4.7, reviews: 98, imageId: 'product-3', href: '/product/luxesleep-gel-memory' },
-  { id: '4', name: 'EcoRest Organic Latex', price: 34999, rating: 4.9, reviews: 75, imageId: 'product-4', href: '/product/ecorest-organic-latex' },
-];
+import { allProducts, type Product } from '@/lib/products';
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(price);
 };
 
-export default function BestSellers() {
+interface BestSellersProps {
+    title?: string;
+    currentProductId?: string;
+}
+
+export default function BestSellers({ title = "Our Best Sellers", currentProductId }: BestSellersProps) {
+  
+  const bestSellers = allProducts
+    .sort((a, b) => b.reviews - a.reviews)
+    .filter(p => p.id !== currentProductId)
+    .slice(0, 4);
+
   return (
     <section className="py-16 sm:py-24">
       <div className="container">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Our Best Sellers
+            {title}
           </h2>
           <p className="mt-4 text-lg leading-8 text-muted-foreground">
-            Loved by our customers. Discover the products everyone is talking about.
+            {title === "Our Best Sellers" ? "Loved by our customers. Discover the products everyone is talking about." : "Check out these popular items."}
           </p>
         </div>
         <div className="mt-12 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
