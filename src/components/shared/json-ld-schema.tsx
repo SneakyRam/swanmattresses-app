@@ -14,7 +14,7 @@ const JsonLdSchema = () => {
         '@type': 'Organization',
         'name': BRAND_NAME,
         'url': WEBSITE_URL,
-        'logo': `${WEBSITE_URL}/logo.png`,
+        'logo': `${WEBSITE_URL}/icon.png`,
         'contactPoint': {
           '@type': 'ContactPoint',
           'telephone': CONTACT_PHONE,
