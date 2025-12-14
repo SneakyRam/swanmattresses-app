@@ -14,15 +14,16 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair-display' });
 
 const siteTitle = `${BRAND_NAME} | ${TAGLINE_MAIN}`;
-const siteDescription = `Experience unparalleled comfort with ${BRAND_NAME}. ${TAGLINE_MAIN} ${TAGLINE_SUB}. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.`;
+const siteDescription = `Experience unparalleled comfort with ${BRAND_NAME}. ${TAGLINE_MAIN} ${TAGLINE_SUB}. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep in India.`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(WEBSITE_URL),
   title: {
     default: siteTitle,
     template: `%s | ${BRAND_NAME}`,
   },
   description: siteDescription,
-  metadataBase: new URL(WEBSITE_URL),
+  keywords: ["mattress", "sofa", "bed", "furniture", "hyderabad", "india", "swan mattresses"],
   openGraph: {
     title: siteTitle,
     description: siteDescription,
@@ -30,19 +31,21 @@ export const metadata: Metadata = {
     siteName: BRAND_NAME,
     images: [
       {
-        url: '/og-image.jpg', // To be replaced with an actual image
+        url: '/og-image.png',
         width: 1200,
         height: 630,
+        alt: siteDescription,
       },
     ],
-    locale: 'en_US',
+    locale: 'en_IN',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
     title: siteTitle,
     description: siteDescription,
-    images: ['/twitter-image.jpg'], // To be replaced with an actual image
+    images: [`${WEBSITE_URL}/twitter-image.png`],
+    creator: '@swanmattresses'
   },
   robots: {
     index: true,
@@ -55,6 +58,9 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  alternates: {
+    canonical: WEBSITE_URL,
+  }
 };
 
 export const viewport: Viewport = {
@@ -62,6 +68,7 @@ export const viewport: Viewport = {
     { media: '(prefers-color-scheme: light)', color: '#F9FBFD' },
     { media: '(prefers-color-scheme: dark)', color: '#0B1220' },
   ],
+  colorScheme: 'light dark',
 }
 
 export default function RootLayout({

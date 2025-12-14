@@ -8,7 +8,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
-import { allProducts, type Product } from '@/lib/products';
+import { allProducts } from '@/lib/products';
 
 const formatPrice = (price: number) => {
   return new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', minimumFractionDigits: 0 }).format(price);
@@ -44,7 +44,7 @@ export default function BestSellers({ title = "Our Best Sellers", currentProduct
 
             return (
               <Link key={product.id} href={product.href} className="group">
-                <Card className="overflow-hidden h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
+                <Card className="relative overflow-hidden h-full flex flex-col transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
                   <CardContent className="p-0 flex-grow flex flex-col">
                     <div className="relative aspect-square w-full">
                       <Image
@@ -53,10 +53,12 @@ export default function BestSellers({ title = "Our Best Sellers", currentProduct
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
                         data-ai-hint={image.imageHint}
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                       />
                       {product.oldPrice && (
                         <Badge variant="destructive" className="absolute top-2 left-2">SALE</Badge>
                       )}
+                       <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     </div>
                     <div className="p-4 flex-grow flex flex-col">
                       <h3 className="text-base font-semibold text-foreground">{product.name}</h3>

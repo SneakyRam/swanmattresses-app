@@ -17,6 +17,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Logo from '@/components/shared/logo';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { SearchDialog } from '../shared/search-dialog';
+import { useState } from 'react';
 
 const NAV_LINKS = [
   { href: '/mattresses', label: 'Mattresses' },
@@ -28,6 +29,8 @@ const NAV_LINKS = [
 ];
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
@@ -36,7 +39,7 @@ export default function Header() {
         </div>
 
         <div className="flex items-center md:hidden">
-          <Sheet>
+          <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="ghost" size="icon">
                 <Menu className="h-6 w-6" />
@@ -53,6 +56,7 @@ export default function Header() {
                     key={link.href}
                     href={link.href}
                     className="text-muted-foreground transition-colors hover:text-foreground"
+                     onClick={() => setIsMobileMenuOpen(false)}
                   >
                     {link.label}
                   </Link>

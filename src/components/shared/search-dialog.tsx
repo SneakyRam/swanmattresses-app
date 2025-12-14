@@ -2,7 +2,7 @@
 'use client';
 
 import * as React from 'react';
-import { Search, X, Loader2 } from 'lucide-react';
+import { Search, X } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
@@ -64,9 +64,10 @@ export function SearchDialog() {
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!query.trim()) return;
-    // This is a placeholder for future functionality. For now, we rely on live results.
-    console.log('Navigating to search page for:', query);
+    // For now, we just close the dialog and rely on live results.
+    // A full search page could be implemented here.
     setOpen(false);
+    // router.push(`/search?q=${query}`);
   };
   
   const handleResultClick = () => {
@@ -77,7 +78,7 @@ export function SearchDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button variant="ghost" size="icon">
+        <Button variant="ghost" size="icon" aria-label="Search">
           <Search className="h-5 w-5" />
           <span className="sr-only">Search</span>
         </Button>
@@ -99,6 +100,7 @@ export function SearchDialog() {
                 <Button
                     variant="ghost"
                     size="icon"
+                    type="button"
                     className="absolute right-1 top-1/2 -translate-y-1/2 h-7 w-7"
                     onClick={() => setQuery('')}
                 >
@@ -106,7 +108,7 @@ export function SearchDialog() {
                 </Button>
             )}
           </div>
-          <Button type="submit" disabled>Search</Button>
+          <Button type="submit" disabled={!query.trim()}>Search</Button>
         </form>
         
         <div className="mt-4">
@@ -150,8 +152,8 @@ export function SearchDialog() {
                     )}
                 </ScrollArea>
             ) : (
-                <div>
-                    <p className="text-sm font-medium text-muted-foreground">Start typing to see results</p>
+                <div className="text-center py-16">
+                    <p className="text-muted-foreground">Search for products by name, category, or description.</p>
                 </div>
             )}
         </div>

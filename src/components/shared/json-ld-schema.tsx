@@ -2,7 +2,6 @@ import {
   BRAND_NAME,
   WEBSITE_URL,
   CONTACT_PHONE,
-  STORE_LOCATION,
   SOCIAL_FACEBOOK,
   SOCIAL_INSTAGRAM,
 } from '@/lib/constants';
@@ -15,35 +14,50 @@ const JsonLdSchema = () => {
         '@type': 'Organization',
         'name': BRAND_NAME,
         'url': WEBSITE_URL,
-        'logo': `${WEBSITE_URL}/logo.png`, // To be replaced with actual logo
+        'logo': `${WEBSITE_URL}/logo.png`,
+        'contactPoint': {
+          '@type': 'ContactPoint',
+          'telephone': CONTACT_PHONE,
+          'contactType': 'Customer Service'
+        },
         'sameAs': [
           SOCIAL_FACEBOOK,
           SOCIAL_INSTAGRAM
         ]
       },
       {
+        '@type': 'WebSite',
+        'url': WEBSITE_URL,
+        'name': BRAND_NAME,
+        'publisher': {
+          '@id': `${WEBSITE_URL}#organization`
+        }
+      },
+      {
         '@type': 'LocalBusiness',
+        '@id': `${WEBSITE_URL}#organization`,
         'name': BRAND_NAME,
         'address': {
           '@type': 'PostalAddress',
           'streetAddress': 'Rampally',
           'addressLocality': 'Hyderabad',
           'addressRegion': 'TS',
+          'postalCode': '501301',
           'addressCountry': 'IN'
         },
         'telephone': CONTACT_PHONE,
         'url': WEBSITE_URL,
-        'image': `${WEBSITE_URL}/og-image.jpg`, // To be replaced
+        'image': `${WEBSITE_URL}/og-image.png`,
         'priceRange': '$$',
+        'openingHours': 'Mo-Su 10:00-21:00',
         'sameAs': [
           SOCIAL_FACEBOOK,
           SOCIAL_INSTAGRAM
         ],
         'geo': {
             '@type': 'GeoCoordinates',
-            // These are approximate coordinates for Rampally. To be replaced with exact location.
-            'latitude': '17.4771', 
-            'longitude': '78.6015'
+            'latitude': '17.481657', 
+            'longitude': '78.583857'
         }
       }
     ]
