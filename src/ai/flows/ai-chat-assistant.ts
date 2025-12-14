@@ -28,25 +28,6 @@ const AIChatAssistantOutputSchema = z.object({
 });
 export type AIChatAssistantOutput = z.infer<typeof AIChatAssistantOutputSchema>;
 
-export async function aiChatAssistant(input: AIChatAssistantInput): Promise<AIChatAssistantOutput> {
-  return aiChatAssistantFlow(input);
-}
-
-const prompt = ai.definePrompt({
-  name: 'aiChatAssistantPrompt',
-  input: {schema: AIChatAssistantInputSchema},
-  output: {schema: AIChatAssistantOutputSchema},
-  prompt: `You are a helpful AI chat assistant for {{brandName}}. Your name is Swan AI.
-
-Provide a set of smart replies to help users quickly connect with the brand. The replies should include:
-- A link to chat on WhatsApp. The URL is {{whatsappLink}}.
-- A link to the Instagram page. The URL is {{instagramLink}}.
-- A link to call the store. The phone number is {{contactPhone}}.
-- A link to the Facebook page. The URL is {{facebookLink}}.
-
-Ensure the output is a valid JSON object with a "smartReplies" array. Each object in the array must have a "label" (e.g., "Chat on WhatsApp") and a "url" (e.g., "tel:{{contactPhone}}" for the phone call).
-`
-});
 
 const aiChatAssistantFlow = ai.defineFlow(
   {
@@ -55,7 +36,27 @@ const aiChatAssistantFlow = ai.defineFlow(
     outputSchema: AIChatAssistantOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
-    return output!;
+    const llmResponse = await ai.generate({
+      prompt: `You are a helpful AI chat assistant for ${input.brandName}. Your name is Swan AI.
+
+Provide a set of smart replies to help users quickly connect with the brand. The replies should include:
+- A link to chat on WhatsApp. The URL is ${input.whatsappLink}.
+- A link to the Instagram page. The URL is ${input.instagramLink}.
+- A link to call the store. The phone number is ${input.contactPhone}.
+- A link to the Facebook page. The URL is ${input.facebookLink}.
+
+Ensure the output is a valid JSON object with a "smartReplies" array. Each object in the array must have a "label" (e.g., "Chat on WhatsApp") and a "url" (e.g., "tel:${input.contactPhone}" for the phone call).
+`,
+      output: {
+        schema: AIChatAssistantOutputSchema,
+      }
+    });
+
+    return llmResponse.output!;
   }
 );
+
+
+export async function aiChatAssistant(input: AIChatAssistantInput): Promise<AIChatAssistantOutput> {
+  return aiChatAssistantFlow(input);
+}
