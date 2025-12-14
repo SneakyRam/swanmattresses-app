@@ -1,7 +1,6 @@
 
 'use client';
 
-import Link from 'next/link';
 import Image from 'next/image';
 import { BRAND_NAME } from '@/lib/constants';
 import { cn } from '@/lib/utils';
@@ -18,8 +17,7 @@ export default function Logo({
   height = 40,
 }: LogoProps) {
   return (
-    <Link
-      href="/"
+    <div
       className={cn(
         'inline-block focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 rounded-sm',
         className
@@ -33,6 +31,6 @@ export default function Logo({
         height={height}
         priority
       />
-    </Link>
+    </div>
   );
 }
