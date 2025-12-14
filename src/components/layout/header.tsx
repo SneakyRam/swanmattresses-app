@@ -97,10 +97,12 @@ export default function Header() {
 
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/cart">
-                  <Button variant="ghost" size="icon">
-                    <ShoppingCart className="h-5 w-5" />
-                    <span className="sr-only">Shopping Cart</span>
+                <Link href="/cart" legacyBehavior={false}>
+                  <Button asChild variant="ghost" size="icon">
+                    <span>
+                      <ShoppingCart className="h-5 w-5" />
+                      <span className="sr-only">Shopping Cart</span>
+                    </span>
                   </Button>
                 </Link>
               </TooltipTrigger>
