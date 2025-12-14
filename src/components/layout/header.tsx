@@ -96,7 +96,7 @@ export default function Header() {
 
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/cart" legacyBehavior passHref>
+                <Link href="/cart">
                   <Button variant="ghost" size="icon">
                     <ShoppingCart className="h-5 w-5" />
                     <span className="sr-only">Shopping Cart</span>
