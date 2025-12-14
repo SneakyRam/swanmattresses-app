@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight, MessageCircle } from 'lucide-react';
+import { WHATSAPP_LINK } from '@/lib/constants';
 
 const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
@@ -84,13 +85,15 @@ export default function HeroSection() {
           transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
           className="mt-8 flex flex-col gap-4 sm:flex-row"
         >
-          <Button size="lg" asChild className="bg-white text-primary hover:bg-white/90">
+          <Button size="lg" asChild>
             <Link href="/shop">
-              Shop Mattresses <ArrowRight className="ml-2 h-5 w-5" />
+              Shop Our Collection <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
           </Button>
-          <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary">
-            Visit Store / WhatsApp <MessageCircle className="ml-2 h-5 w-5" />
+          <Button size="lg" variant="outline" asChild className="border-primary-foreground/50 text-primary-foreground bg-transparent hover:bg-primary-foreground hover:text-background">
+            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
+                Visit Store / WhatsApp <MessageCircle className="ml-2 h-5 w-5" />
+            </a>
           </Button>
         </motion.div>
       </motion.div>
