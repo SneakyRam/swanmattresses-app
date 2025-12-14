@@ -80,7 +80,7 @@ export default function ChatWidget() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 50, scale: 0.9 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className="absolute bottom-[calc(100%+1rem)] right-0 w-80"
+              className="absolute bottom-[calc(100%+1rem)] right-0 w-[calc(100vw-2rem)] sm:w-80"
             >
               <Card className="shadow-2xl">
                 <CardHeader className="flex flex-row items-center gap-3">
