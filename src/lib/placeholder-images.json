@@ -1,3 +1,124 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "A luxurious and modern bedroom with a large bed as the centerpiece.",
+      "imageUrl": "https://images.unsplash.com/photo-1731336478850-6bce7235e320?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxsdXh1cnklMjBiZWRyb29tfGVufDB8fHx8MTc2NTY2OTI0NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury bedroom"
+    },
+    {
+      "id": "category-mattress",
+      "description": "A close-up shot of a high-quality mattress, showing its texture and layers.",
+      "imageUrl": "https://images.unsplash.com/photo-1646186260227-4dfe6805d4bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtYXR0cmVzcyUyMGNsb3NldXB8ZW58MHx8fHwxNzY1NzIwNDc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mattress closeup"
+    },
+    {
+      "id": "category-bed",
+      "description": "A stylish, modern bed frame in a well-lit bedroom.",
+      "imageUrl": "https://images.unsplash.com/photo-1678978866819-306ed8608e7f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBiZWR8ZW58MHx8fHwxNzY1NzIwNDc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern bed"
+    },
+    {
+      "id": "category-sofa",
+      "description": "A comfortable and elegant sofa in a living room setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1762395500128-2af29da28c3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxlbGVnYW50JTIwc29mYXxlbnwwfHx8fDE3NjU2NDI1ODF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "elegant sofa"
+    },
+    {
+      "id": "product-1",
+      "description": "The 'CloudComfort' premium mattress.",
+      "imageUrl": "https://images.unsplash.com/photo-1688383454974-1aec959a5163?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxwcmVtaXVtJTIwbWF0dHJlc3N8ZW58MHx8fHwxNzY1NzIwNDc3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "premium mattress"
+    },
+    {
+      "id": "product-2",
+      "description": "The 'OrthoDream' orthopedic mattress.",
+      "imageUrl": "https://images.unsplash.com/photo-1676956969614-a90a61930604?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b3J0aG9wZWRpYyUyMG1hdHRyZXNzfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "orthopedic mattress"
+    },
+    {
+      "id": "product-3",
+      "description": "The 'LuxeSleep' gel memory foam mattress.",
+      "imageUrl": "https://images.unsplash.com/photo-1747494113438-5c87f8d5746b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtZW1vcnklMjBmb2FtfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "memory foam"
+    },
+    {
+      "id": "product-4",
+      "description": "The 'EcoRest' organic latex mattress.",
+      "imageUrl": "https://images.unsplash.com/photo-1691731052289-a81065740f77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b3JnYW5pYyUyMG1hdHRyZXNzfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "organic mattress"
+    },
+    {
+      "id": "why-swan-quality",
+      "description": "Image representing quality craftsmanship.",
+      "imageUrl": "https://images.unsplash.com/photo-1630533597763-81319c3e4d3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxxdWFsaXR5JTIwY3JhZnRzbWFuc2hpcHxlbnwwfHx8fDE3NjU3MjA0Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "quality craftsmanship"
+    },
+    {
+      "id": "why-swan-comfort",
+      "description": "Image representing ultimate comfort.",
+      "imageUrl": "https://images.unsplash.com/photo-1531353826977-0941b4779a1c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxwZXJzb24lMjBzbGVlcGluZ3xlbnwwfHx8fDE3NjU2MjEyMDB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person sleeping"
+    },
+    {
+      "id": "why-swan-trust",
+      "description": "Image representing customer trust and warranty.",
+      "imageUrl": "https://images.unsplash.com/photo-1543269664-56d93c1b41a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxoYXBweSUyMGN1c3RvbWVyfGVufDB8fHx8MTc2NTY5OTY3M3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy customer"
+    },
+    {
+      "id": "testimonial-1",
+      "description": "Happy customer testimonial avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1600180758890-6b94519a8ba6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjU2NzI5MzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "person portrait"
+    },
+    {
+      "id": "testimonial-2",
+      "description": "Happy customer testimonial avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHx3b21hbiUyMHNtaWxpbmd8ZW58MHx8fHwxNzY1NzAzNDU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "woman smiling"
+    },
+    {
+      "id": "testimonial-3",
+      "description": "Happy customer testimonial avatar.",
+      "imageUrl": "https://images.unsplash.com/photo-1583195763986-0231686dcd43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtYW4lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjU2MDkxMDh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man portrait"
+    },
+    {
+      "id": "instagram-1",
+      "description": "Instagram post preview 1.",
+      "imageUrl": "https://images.unsplash.com/photo-1665522557417-78f21931e2e0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxzdHlsZWQlMjBiZWRyb29tfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "styled bedroom"
+    },
+    {
+      "id": "instagram-2",
+      "description": "Instagram post preview 2.",
+      "imageUrl": "https://images.unsplash.com/photo-1699901524684-155a34e65dfa?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxzb2ZhJTIwZGV0YWlsfGVufDB8fHx8MTc2NTcyMDQ3N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sofa detail"
+    },
+    {
+      "id": "instagram-3",
+      "description": "Instagram post preview 3.",
+      "imageUrl": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxsaXZpbmclMjByb29tfGVufDB8fHx8MTc2NTY5NDY0MHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "living room"
+    },
+    {
+      "id": "instagram-4",
+      "description": "Instagram post preview 4.",
+      "imageUrl": "https://images.unsplash.com/photo-1691703028663-c5ff8cbb07c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxtYXR0cmVzcyUyMGxheWVyc3xlbnwwfHx8fDE3NjU3MjA0Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "mattress layers"
+    },
+    {
+      "id": "instagram-5",
+      "description": "Instagram post preview 5.",
+      "imageUrl": "https://images.unsplash.com/photo-1552558636-f6a8f071c2b3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxtaW5pbWFsaXN0JTIwYmVkcm9vbXxlbnwwfHx8fDE3NjU2NDAxNDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist bedroom"
+    },
+    {
+      "id": "instagram-6",
+      "description": "Instagram post preview 6.",
+      "imageUrl": "https://images.unsplash.com/photo-1632927126606-e9f653064555?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjb3p5JTIwaG9tZXxlbnwwfHx8fDE3NjU2NDg2NzV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "cozy home"
+    }
+  ]
 }
