@@ -14,7 +14,7 @@ const JsonLdSchema = () => {
         '@type': 'Organization',
         'name': BRAND_NAME,
         'url': WEBSITE_URL,
-        'logo': `${WEBSITE_URL}/icon.png`,
+        'logo': `${WEBSITE_URL}/logo.svg`,
         'contactPoint': {
           '@type': 'ContactPoint',
           'telephone': CONTACT_PHONE,
@@ -56,8 +56,8 @@ const JsonLdSchema = () => {
         ],
         'geo': {
             '@type': 'GeoCoordinates',
-            'latitude': '17.481657', 
-            'longitude': '78.583857'
+            'latitude': '17.485122', 
+            'longitude': '78.601931'
         }
       }
     ]
