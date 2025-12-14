@@ -7,11 +7,10 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight, MessageCircle } from 'lucide-react';
-import { WHATSAPP_LINK } from '@/lib/constants';
+import { WHATSAPP_LINK, TAGLINE } from '@/lib/constants';
 
 const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
 
-const headlineText = "Where Luxury Meets Comfort.";
 const animatedText = {
   hidden: { opacity: 0 },
   visible: {
@@ -60,10 +59,10 @@ export default function HeroSection() {
           variants={animatedText}
           initial="hidden"
           animate="visible"
-          aria-label={headlineText}
-          className="font-headline text-5xl font-bold tracking-tight text-white sm:text-6xl md:text-7xl"
+          aria-label={TAGLINE}
+          className="font-headline text-5xl font-bold tracking-tight text-white sm:text-7xl md:text-8xl"
         >
-          {headlineText.split('').map((char, index) => (
+          {TAGLINE.split('').map((char, index) => (
             <motion.span key={index} variants={letterAnimation} className="inline-block">
               {char === ' ' ? '\u00A0' : char}
             </motion.span>

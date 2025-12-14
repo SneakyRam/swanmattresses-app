@@ -8,21 +8,24 @@ import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import ChatWidget from '@/components/shared/chat-widget';
 import JsonLdSchema from '@/components/shared/json-ld-schema';
-import { BRAND_NAME, WEBSITE_URL } from '@/lib/constants';
+import { BRAND_NAME, TAGLINE, WEBSITE_URL } from '@/lib/constants';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 const playfairDisplay = Playfair_Display({ subsets: ['latin'], variable: '--font-playfair-display' });
 
+const siteTitle = `${BRAND_NAME} | ${TAGLINE}`;
+const siteDescription = `Experience unparalleled comfort with ${BRAND_NAME}. ${TAGLINE}. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.`;
+
 export const metadata: Metadata = {
   title: {
-    default: `${BRAND_NAME} - Luxury Mattresses, Beds, and Sofas`,
+    default: siteTitle,
     template: `%s | ${BRAND_NAME}`,
   },
-  description: 'Experience unparalleled comfort and luxury with Swan Mattresses. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.',
+  description: siteDescription,
   metadataBase: new URL(WEBSITE_URL),
   openGraph: {
-    title: `${BRAND_NAME} - Luxury Mattresses, Beds, and Sofas`,
-    description: 'Experience unparalleled comfort and luxury with Swan Mattresses. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.',
+    title: siteTitle,
+    description: siteDescription,
     url: WEBSITE_URL,
     siteName: BRAND_NAME,
     images: [
@@ -37,8 +40,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${BRAND_NAME} - Luxury Mattresses, Beds, and Sofas`,
-    description: 'Experience unparalleled comfort and luxury with Swan Mattresses. Discover our premium collection of mattresses, beds, and sofas, crafted for the perfect sleep.',
+    title: siteTitle,
+    description: siteDescription,
     images: ['/twitter-image.jpg'], // To be replaced with an actual image
   },
   robots: {

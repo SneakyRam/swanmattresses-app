@@ -1,4 +1,5 @@
 export const BRAND_NAME = 'Swan Mattresses';
+export const TAGLINE = 'Live with absolute nirvana';
 export const WEBSITE_URL = 'https://swanmattresses.com';
 export const CONTACT_PHONE = '+918317668162';
 export const SOCIAL_INSTAGRAM = 'https://www.instagram.com/swanmattresses/';
