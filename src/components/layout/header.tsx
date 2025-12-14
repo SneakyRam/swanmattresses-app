@@ -1,3 +1,4 @@
+
 'use client';
 
 import Link from 'next/link';
@@ -96,7 +97,7 @@ export default function Header() {
 
             <Tooltip>
               <TooltipTrigger asChild>
-                <Link href="/cart">
+                <Link href="/cart" passHref>
                   <Button variant="ghost" size="icon">
                     <ShoppingCart className="h-5 w-5" />
                     <span className="sr-only">Shopping Cart</span>
