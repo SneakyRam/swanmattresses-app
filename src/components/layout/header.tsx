@@ -2,7 +2,7 @@
 'use client';
 
 import Link from 'next/link';
-import { Menu, Search, User } from 'lucide-react';
+import { Menu, User } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -16,7 +16,7 @@ import {
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Logo from '@/components/shared/logo';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { SearchDialog } from '../shared/search-dialog';
 
 const NAV_LINKS = [
   { href: '/mattresses', label: 'Mattresses' },
@@ -80,21 +80,7 @@ export default function Header() {
         </nav>
 
         <div className="flex flex-1 items-center justify-end gap-2">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <div>
-                  <Button variant="ghost" size="icon" disabled>
-                    <Search className="h-5 w-5" />
-                    <span className="sr-only">Search</span>
-                  </Button>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent>
-                <p>Coming Soon</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <SearchDialog />
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
