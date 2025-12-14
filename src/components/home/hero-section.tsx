@@ -3,98 +3,117 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import { ArrowRight, MessageCircle } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { ArrowRight, MessageCircle } from 'lucide-react';
 import { WHATSAPP_LINK, TAGLINE } from '@/lib/constants';
 
-const heroImage = PlaceHolderImages.find((img) => img.id === 'hero-background');
+const heroImage = PlaceHolderImages.find(
+  (img) => img.id === 'hero-background'
+);
 
 export default function HeroSection() {
   if (!heroImage) return null;
 
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-start overflow-hidden p-4 text-center text-primary-foreground md:p-16">
+    <section className="relative flex min-h-[calc(100vh-4rem)] items-center overflow-hidden px-6 py-12 md:px-16">
+      {/* Background Image */}
       <Image
         src={heroImage.imageUrl}
         alt={heroImage.description}
         fill
-        className="object-cover"
-        data-ai-hint={heroImage.imageHint}
         priority
+        className="object-cover"
       />
-      <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent" />
-      <div className="absolute inset-0 bg-primary/10" />
 
+      {/* Theme-aware overlays */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent dark:from-black/70 dark:via-black/40" />
+      <div className="absolute inset-0 bg-brand-500/10 dark:bg-brand-400/10" />
+
+      {/* Content */}
       <motion.div
         initial="hidden"
         animate="visible"
         variants={{
-          visible: { transition: { staggerChildren: 0.3 } },
+          visible: { transition: { staggerChildren: 0.25 } },
         }}
-        className="relative z-10 flex flex-col items-start text-left"
+        className="relative z-10 max-w-3xl"
       >
+        {/* Headline */}
         <motion.h1
           variants={{
-            hidden: { opacity: 0, y: 50 },
+            hidden: { opacity: 0, y: 40 },
             visible: {
               opacity: 1,
               y: 0,
               transition: { duration: 0.8, ease: 'easeOut' },
             },
           }}
-          className="font-headline text-6xl font-bold tracking-tight text-transparent sm:text-8xl"
+          className="font-headline text-5xl font-bold tracking-tight sm:text-7xl"
         >
-          <span className="animate-text-gradient bg-gradient-to-r from-brand-300 via-brand-400 to-brand-300 bg-[200%_auto] bg-clip-text text-transparent">
+          <span className="animate-text-gradient bg-gradient-to-r from-brand-300 via-brand-500 to-brand-300 bg-[200%_auto] bg-clip-text text-transparent">
             {TAGLINE}
           </span>
         </motion.h1>
 
+        {/* Subtitle */}
         <motion.p
           variants={{
-            hidden: { opacity: 0, y: 50 },
+            hidden: { opacity: 0, y: 30 },
             visible: {
               opacity: 1,
               y: 0,
-              transition: { duration: 0.8, delay: 0.2, ease: 'easeOut' },
+              transition: { duration: 0.7, delay: 0.15 },
             },
           }}
-          className="mt-6 max-w-xl text-lg text-slate-200 md:text-xl"
+          className="mt-6 max-w-xl text-lg text-slate-100 dark:text-slate-300"
         >
-          Discover handcrafted mattresses, beds, and sofas designed for your
-          ultimate relaxation.
+          Discover handcrafted mattresses, beds, and sofas designed for
+          unmatched comfort and lasting elegance.
         </motion.p>
 
+        {/* CTAs */}
         <motion.div
           variants={{
-            hidden: { opacity: 0, y: 50 },
+            hidden: { opacity: 0, y: 30 },
             visible: {
               opacity: 1,
               y: 0,
-              transition: { duration: 0.8, delay: 0.4, ease: 'easeOut' },
+              transition: { duration: 0.7, delay: 0.3 },
             },
           }}
-          className="mt-10 flex flex-col gap-4 sm:flex-row"
+          className="mt-10 flex flex-wrap gap-4"
         >
+          {/* Primary CTA */}
           <Button
             size="lg"
             variant="primary-cta"
             asChild
-            className="transform transition-transform duration-300 hover:scale-105"
+            className="group relative overflow-hidden"
           >
             <Link href="/shop">
-              Shop Our Collection <ArrowRight className="ml-2 h-5 w-5" />
+              <span className="relative z-10 flex items-center">
+                Shop Our Collection
+                <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+              </span>
             </Link>
           </Button>
+
+          {/* Secondary CTA */}
           <Button
             size="lg"
             variant="outline"
             asChild
-            className="border-white/50 text-white backdrop-blur-sm transition-colors hover:border-white hover:bg-white/10"
+            className="border-white/40 text-white backdrop-blur-md hover:bg-white/10 dark:border-white/20"
           >
-            <a href={WHATSAPP_LINK} target="_blank" rel="noopener noreferrer">
-              Visit Store / WhatsApp <MessageCircle className="ml-2 h-5 w-5" />
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Store / WhatsApp
+              <MessageCircle className="ml-2 h-5 w-5" />
             </a>
           </Button>
         </motion.div>

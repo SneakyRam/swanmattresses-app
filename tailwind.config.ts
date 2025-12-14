@@ -108,7 +108,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'gradient-shift': 'gradient-shift 4s ease infinite',
+        'gradient-shift': 'gradient-shift 6s ease infinite',
         'glow': 'glow 5s ease-in-out infinite',
         'text-gradient': 'text-gradient 3s linear infinite',
       },
