@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -11,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { Phone, Mail, MapPin, Instagram, Facebook, Loader2 } from 'lucide-react';
-import { BRAND_NAME, CONTACT_PHONE, SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, STORE_LOCATION } from '@/lib/constants';
+import { BRAND_NAME, CONTACT_PHONE, SOCIAL_FACEBOOK, SOCIAL_INSTAGRAM, STORE_LOCATION, STORE_LOCATION_URL } from '@/lib/constants';
 
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
@@ -22,10 +23,13 @@ const contactSchema = z.object({
 const contactInfo = [
   { icon: Phone, text: CONTACT_PHONE, href: `tel:${CONTACT_PHONE}` },
   { icon: Mail, text: 'support@swanmattresses.com', href: 'mailto:support@swanmattresses.com' },
-  { icon: MapPin, text: STORE_LOCATION, href: '#' },
-  { icon: Instagram, text: '@swanmattresses', href: SOCIAL_INSTAGRAM },
-  { icon: Facebook, text: 'Swan Mattresses', href: SOCIAL_FACEBOOK },
+  { icon: MapPin, text: STORE_LOCATION, href: STORE_LOCATION_URL },
 ];
+
+const socialLinks = [
+    { icon: Instagram, text: '@swanmattresses', href: SOCIAL_INSTAGRAM },
+    { icon: Facebook, text: 'Swan Mattresses', href: SOCIAL_FACEBOOK },
+]
 
 function ContactForm() {
   const { toast } = useToast();
@@ -58,8 +62,10 @@ function ContactForm() {
       initial={{ opacity: 0, x: -50 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
+      className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm"
     >
       <h2 className="font-headline text-3xl font-bold">Send Us a Message</h2>
+      <p className="mt-2 text-muted-foreground">We'll get back to you as soon as possible.</p>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)} className="mt-8 space-y-6">
           <FormField
@@ -101,7 +107,7 @@ function ContactForm() {
               </FormItem>
             )}
           />
-          <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+          <Button type="submit" size="lg" className="w-full transition-transform duration-300 hover:scale-105" disabled={isSubmitting}>
               {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
             {isSubmitting ? 'Sending...' : 'Send Message'}
           </Button>
@@ -144,18 +150,21 @@ export default function ContactPage() {
 
       {/* Main Content */}
       <section className="container py-16 md:py-24">
-        <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-16 md:grid-cols-5">
           {/* Contact Form */}
-          {isClient && <ContactForm />}
-
+          <div className="md:col-span-3">
+             {isClient && <ContactForm />}
+          </div>
 
           {/* Contact Details */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="md:col-span-2"
           >
             <h2 className="font-headline text-3xl font-bold">Contact Information</h2>
+            <p className="mt-2 text-muted-foreground">Find us here or follow our journey online.</p>
             <div className="mt-8 space-y-6">
               {contactInfo.map((item, index) => (
                 <a
@@ -163,19 +172,43 @@ export default function ContactPage() {
                   href={item.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-4 text-lg transition-colors hover:text-primary"
+                  className="flex items-start gap-4 text-lg transition-colors hover:text-primary relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100"
                 >
                   <item.icon className="mt-1 h-6 w-6 flex-shrink-0 text-primary" />
                   <span>{item.text}</span>
                 </a>
               ))}
             </div>
+            
+            <div className="mt-10 space-y-4">
+                 {socialLinks.map((item, index) => (
+                    <a
+                      key={index}
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-4 text-lg transition-colors hover:text-primary relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:after:origin-bottom-left hover:after:scale-x-100"
+                    >
+                      <item.icon className="h-6 w-6 flex-shrink-0 text-primary" />
+                      <span>{item.text}</span>
+                    </a>
+                  ))}
+            </div>
              <div className="mt-12">
               <h3 className="font-headline text-2xl font-bold">Visit Our Store</h3>
               <p className="mt-2 text-muted-foreground">{STORE_LOCATION}</p>
-              {/* Dummy Map */}
-              <div className="mt-4 h-64 w-full rounded-lg bg-secondary flex items-center justify-center">
-                 <p className="text-muted-foreground">Map will be displayed here</p>
+              {/* Google Map */}
+              <div className="mt-4 h-80 w-full overflow-hidden rounded-lg border shadow-sm">
+                 <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15220.198285514013!2d78.5838573403328!3d17.481657065961604!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb9c09c95c8269%3A0xe5a6624838634139!2sRampally%2C%20Telangana%2C%20India!5e0!3m2!1sen!2sus!4v1689885808795!5m2!1sen!2sus"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={false}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Store Location"
+                  ></iframe>
               </div>
             </div>
           </motion.div>

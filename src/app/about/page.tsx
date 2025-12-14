@@ -1,8 +1,9 @@
+
 'use client';
 
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Award, Users, MapPin } from 'lucide-react';
+import { Award, Users, MapPin, Feather, ShieldCheck } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { BRAND_NAME, STORE_LOCATION } from '@/lib/constants';
 
@@ -133,22 +134,28 @@ export default function AboutPage() {
 const WhySwan = () => {
     const features = [
       {
+        icon: Award,
         title: 'Unmatched Quality',
         description: 'We use only the finest materials, ensuring durability and a premium feel that lasts for years.',
       },
       {
+        icon: Feather,
         title: 'Supreme Comfort',
         description: 'Our mattresses are ergonomically designed to provide optimal support and pressure relief.',
       },
       {
+        icon: ShieldCheck,
         title: 'Customer Trust',
         description: 'With a comprehensive warranty and dedicated support, your satisfaction is our top priority.',
       },
     ];
 
     return (
-        <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto max-w-4xl text-center">
             <h2 className="font-headline text-3xl font-bold md:text-4xl">Why {BRAND_NAME}?</h2>
+             <p className="mt-4 text-lg leading-8 text-muted-foreground">
+              Experience the difference that true craftsmanship and dedication to comfort can make.
+            </p>
             <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
                 {features.map((feature, i) => (
                     <motion.div
@@ -158,8 +165,10 @@ const WhySwan = () => {
                       viewport={{ once: true, amount: 0.5 }}
                       variants={fadeIn}
                       transition={{ ...fadeIn.transition, delay: i * 0.2 }}
+                      className="rounded-lg border bg-card p-8 text-card-foreground shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                     >
-                        <h3 className="font-headline text-xl font-semibold">{feature.title}</h3>
+                        <feature.icon className="mx-auto h-10 w-10 text-primary" />
+                        <h3 className="mt-6 font-headline text-xl font-semibold">{feature.title}</h3>
                         <p className="mt-2 text-muted-foreground">{feature.description}</p>
                     </motion.div>
                 ))}
