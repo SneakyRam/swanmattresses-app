@@ -3,7 +3,7 @@
 
 import Link from 'next/link';
 import { Menu, User } from 'lucide-react';
-
+import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -17,7 +17,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import Logo from '@/components/shared/logo';
 import { ThemeToggle } from '@/components/shared/theme-toggle';
 import { SearchDialog } from '../shared/search-dialog';
-import { useState } from 'react';
 
 const NAV_LINKS = [
   { href: '/mattresses', label: 'Mattresses' },
@@ -33,7 +32,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-16 items-center">
+      <div className="flex h-16 items-center px-4 sm:px-6 lg:px-8">
         <div className="mr-4 hidden md:flex">
           <Logo width={120} height={40} />
         </div>
