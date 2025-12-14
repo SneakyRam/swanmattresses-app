@@ -38,7 +38,7 @@ export default function HeroSection() {
   if (!heroImage) return null;
 
   return (
-    <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden text-center text-primary-foreground">
+    <section className="relative flex min-h-[calc(100vh-4rem)] items-center justify-center overflow-hidden p-4 text-center text-primary-foreground">
       <Image
         src={heroImage.imageUrl}
         alt={heroImage.description}
@@ -54,7 +54,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: 'easeOut' }}
-        className="relative z-10 flex flex-col items-center"
+        className="relative z-10 flex w-full flex-col items-center"
       >
         <motion.h1
           variants={animatedText}
@@ -74,7 +74,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.5, ease: 'easeOut' }}
-          className="mt-6 text-lg text-slate-200 md:text-xl"
+          className="mt-6 max-w-3xl text-lg text-slate-200 md:text-xl"
         >
           Discover handcrafted mattresses, beds, and sofas designed for your ultimate relaxation.
         </motion.p>
