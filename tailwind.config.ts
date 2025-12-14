@@ -91,9 +91,10 @@ export default {
             height: '0',
           },
         },
-        'gradient-shift': {
-          '0%, 100%': { 'background-position': '0% 50%' },
+        gradientShift: {
+          '0%': { 'background-position': '0% 50%' },
           '50%': { 'background-position': '100% 50%' },
+          '100%': { 'background-position': '0% 50%' },
         },
         'glow': {
           '0%, 100%': { 'box-shadow': '0 0 5px hsl(var(--primary))' },
@@ -108,7 +109,7 @@ export default {
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
-        'gradient-shift': 'gradient-shift 6s ease infinite',
+        'gradient': 'gradientShift 6s ease infinite',
         'glow': 'glow 5s ease-in-out infinite',
         'text-gradient': 'text-gradient 3s linear infinite',
       },
