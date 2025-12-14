@@ -1,12 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import {
-  Menu,
-  Search,
-  ShoppingCart,
-  User,
-} from 'lucide-react';
+import { Menu, Search, ShoppingCart, User } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -36,9 +31,9 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
-          <Logo width={120} height={40}/>
+          <Logo width={120} height={40} />
         </div>
-        
+
         <div className="flex items-center md:hidden">
           <Sheet>
             <SheetTrigger asChild>
@@ -47,9 +42,9 @@ export default function Header() {
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="left" className='w-full max-w-[300px]'>
-              <div className='mb-8'>
-                <Logo width={120} height={40}/>
+            <SheetContent side="left" className="w-full max-w-[300px]">
+              <div className="mb-8">
+                <Logo width={120} height={40} />
               </div>
               <nav className="grid gap-4 text-lg font-medium">
                 {NAV_LINKS.map((link) => (
@@ -67,9 +62,8 @@ export default function Header() {
         </div>
 
         <div className="flex w-full items-center justify-center md:hidden">
-           <Logo width={100} height={35}/>
+          <Logo width={100} height={35} />
         </div>
-
 
         {/* Desktop Navigation */}
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
@@ -89,7 +83,7 @@ export default function Header() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <div>
-                   <Button variant="ghost" size="icon" disabled>
+                  <Button variant="ghost" size="icon" disabled>
                     <Search className="h-5 w-5" />
                     <span className="sr-only">Search</span>
                   </Button>
@@ -103,16 +97,15 @@ export default function Header() {
             <Tooltip>
               <TooltipTrigger asChild>
                 <div>
-                  <Button variant="ghost" size="icon" asChild>
-                    <Link href="/cart">
-                      <ShoppingCart className="h-5 w-5" />
-                      <span className="sr-only">Shopping Cart</span>
-                    </Link>
+                   {/* The cart functionality is not implemented yet. */}
+                  <Button variant="ghost" size="icon" disabled>
+                    <ShoppingCart className="h-5 w-5" />
+                    <span className="sr-only">Shopping Cart</span>
                   </Button>
                 </div>
               </TooltipTrigger>
               <TooltipContent>
-                 <p>Cart functionality coming soon</p>
+                <p>Cart functionality coming soon</p>
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -127,11 +120,19 @@ export default function Header() {
             <DropdownMenuContent align="end">
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild><Link href="/profile">Profile</Link></DropdownMenuItem>
-              <DropdownMenuItem asChild><Link href="/orders">Orders</Link></DropdownMenuItem>
-              <DropdownMenuItem asChild><Link href="/wishlist">Wishlist</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/profile">Profile</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/profile">Orders</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/profile">Wishlist</Link>
+              </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem asChild><Link href="/login">Login</Link></DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link href="/login">Login</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
