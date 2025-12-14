@@ -1,18 +1,11 @@
-import {
-  ChevronRight,
-  Star,
-} from 'lucide-react';
+import { ChevronRight, Star } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
-import {
-  Card,
-  CardContent,
-} from '@/components/ui/card';
 import BestSellers from '@/components/home/best-sellers';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { PurchaseInquiryDialog } from '@/components/shop/purchase-inquiry-dialog';
 
 const product = {
   id: '1',
@@ -47,11 +40,11 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
     <div className="bg-background">
       <div className="container py-8">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link href="/" className="hover:text-foreground">
+          <Link href="/" className="relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100">
             Home
           </Link>
           <ChevronRight className="h-4 w-4" />
-          <Link href="/shop" className="hover:text-foreground">
+          <Link href="/shop" className="relative after:absolute after:bottom-[-2px] after:left-0 after:h-[1px] after:w-full after:origin-bottom-right after:scale-x-0 after:bg-primary after:transition-transform after:duration-300 after:ease-out hover:text-foreground hover:after:origin-bottom-left hover:after:scale-x-100">
             Shop
           </Link>
           <ChevronRight className="h-4 w-4" />
@@ -61,8 +54,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
 
       <div className="container grid grid-cols-1 gap-12 md:grid-cols-2">
         <div>
-          <Card className="overflow-hidden">
-            <CardContent className="p-0">
+          <div className="overflow-hidden rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="p-0">
               <div className="relative aspect-square w-full">
                 {image && (
                   <Image
@@ -79,8 +72,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
                   </Badge>
                 )}
               </div>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         </div>
 
         <div>
@@ -122,13 +115,8 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
             ))}
           </ul>
 
-          <div className="mt-8 flex gap-4">
-            <Button size="lg" className="flex-1">
-              Add to Cart
-            </Button>
-            <Button size="lg" variant="outline" className="flex-1">
-              Buy Now
-            </Button>
+          <div className="mt-8">
+            <PurchaseInquiryDialog productName={product.name} />
           </div>
         </div>
       </div>
